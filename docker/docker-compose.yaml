@@ -1,0 +1,21 @@
+# Use root/example as user/password credentials
+version: '3.1'
+
+services:
+  mongodb:
+    image: mongo
+    restart: always
+    ports:
+      - 27017:27017
+  mysql:
+    image: mysql:8.0.33
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: shop_close
+      MYSQL_USER: lenam
+      MYSQL_PASSWORD: 123456
+    volumes:
+      - ./mysql:/var/lib/mysql
