@@ -19,3 +19,9 @@ services:
       MYSQL_PASSWORD: 123456
     volumes:
       - ./mysql:/var/lib/mysql
+  redis:
+    image: redis:latest
+    restart: always
+    ports:
+      - 6379:6379
+    
