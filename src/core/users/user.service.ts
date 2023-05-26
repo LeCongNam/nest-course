@@ -110,4 +110,12 @@ export class UserService {
       id: getUser.id,
     };
   }
+
+  async getProfile(id: string) {
+    const user = await this.findOneUser({ id });
+    if (!user) {
+      return false;
+    }
+    return user;
+  }
 }
