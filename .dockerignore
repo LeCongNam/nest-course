@@ -24,3 +24,7 @@ nodemon.json
 
 docker/mysql
 mysql
+
+.idea
+.vscode
+/docker

@@ -1,13 +1,10 @@
 import { Exclude, Type, plainToInstance } from 'class-transformer';
 import { BaseEntityShare } from 'src/shared/entities/BaseEntity.entity';
-import { Column, Entity, PrimaryColumn } from 'typeorm';
+import { Column, Entity, PrimaryColumn, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('tb_user')
 export class UserEntity extends BaseEntityShare {
-  @PrimaryColumn({
-    generated: 'uuid',
-    nullable: false,
-  })
+  @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @Column({
@@ -48,7 +45,15 @@ export class UserEntity extends BaseEntityShare {
     type: 'boolean',
     default: false,
   })
+  @Exclude({ toClassOnly: true })
   deleted: boolean;
+
+  @Column({
+    type: 'boolean',
+    default: false,
+  })
+  @Exclude({ toClassOnly: true })
+  isVerifyEmail: boolean;
 
   constructor() {
     super();

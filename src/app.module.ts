@@ -11,8 +11,9 @@ import { ThrottlerModule } from '@nestjs/throttler';
 import { MailerModule } from '@nestjs-modules/mailer';
 import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handlebars.adapter';
 import { I18nModule, QueryResolver, AcceptLanguageResolver } from 'nestjs-i18n';
-import { NotificationsModule } from './notifications/notifications.module';
+import { NotificationsModule } from './feature/notifications/notifications.module';
 import { join } from 'path';
+import { GoogleFormModule } from './feature/gg_form/googleForm.module';
 
 @Module({
   imports: [
@@ -84,7 +85,7 @@ import { join } from 'path';
     I18nModule.forRoot({
       fallbackLanguage: 'en',
       loaderOptions: {
-        path: join(__dirname, '/i18n/'),
+        path: join(__dirname, '/feature/i18n/'),
         watch: true,
       },
       resolvers: [
@@ -95,6 +96,7 @@ import { join } from 'path';
     UserModule,
     AuthModule,
     NotificationsModule,
+    GoogleFormModule,
   ],
   controllers: [],
   providers: [AppService],
