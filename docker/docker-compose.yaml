@@ -24,4 +24,14 @@ services:
     restart: always
     ports:
       - 6379:6379
-    
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: 'rabbitmq'
+    ports:
+      - 5672:5672
+      - 15672:15672
+    environment:
+      RABBITMQ_DEFAULT_PASS: 123456
+      RABBITMQ_DEFAULT_USER: root
+    volumes:
+      - ./rabbitmq/data/:/var/lib/rabbitmq/
