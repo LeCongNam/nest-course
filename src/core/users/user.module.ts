@@ -1,14 +1,15 @@
 import { Module } from '@nestjs/common';
+import { AuthModule } from 'src/core/auth/auth.module';
+import { PrismaService } from 'src/shared/prisma/prisma.service';
 import { UserController } from './user.controller';
 import { UserService } from './user.service';
-import { UserEntity } from './entities/user.entity';
-import { AuthModule } from 'src/core/auth/auth.module';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { JwtService } from '@nestjs/jwt';
+import { SearchModule } from '../search/search.module';
 
 @Module({
-  imports: [AuthModule, TypeOrmModule.forFeature([UserEntity])],
+  imports: [AuthModule, SearchModule],
   controllers: [UserController],
-  providers: [UserService, UserEntity],
+  providers: [UserService, PrismaService, JwtService],
   exports: [UserService],
 })
 export class UserModule {}

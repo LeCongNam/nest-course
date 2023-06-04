@@ -1,30 +1,98 @@
 import {
   Controller,
   Get,
-  NotFoundException,
   Param,
   ParseUUIDPipe,
+  Query,
+  Req,
   Res,
+  UseGuards,
 } from '@nestjs/common';
-import { Response } from 'express';
+import { plainToClass } from 'class-transformer';
+import { Response, query } from 'express';
 import { BaseController } from 'src/shared/res/custom-response';
+import { AuthGuard } from '../auth/guard/auth.guard';
+import { RoleGuard } from '../auth/guard/role.guard';
+import { Role } from './constant';
+import { Roles } from './decorator';
+import { UsersDto } from './dto/getAll-user';
+import { UserDto } from './dto/user.dto';
 import { UserService } from './user.service';
-import { UserEntity } from './entities/user.entity';
+import { BaseMapping } from '../search/mapping/base.mapping';
+import { SearchService } from '../search/service/search.service';
+import { SearchRequest } from '@elastic/elasticsearch/lib/api/types';
 
 @Controller('user')
 export class UserController extends BaseController {
-  constructor(private userService: UserService) {
+  constructor(private readonly _useService: UserService) {
     super();
   }
 
   @Get('profile/:id')
-  async profile(@Param('id', ParseUUIDPipe) id: string) {
-    const user = await this.userService.getProfile(id);
+  @Roles(Role.MEMBER)
+  @UseGuards(AuthGuard, RoleGuard)
+  public async getProfile(
+    @Param('id', ParseUUIDPipe) id: string,
+    @Res() res: Response,
+  ) {
+    const user = await this._useService.findOneUser({ id });
+    if (user) {
+      const userTransForm = UserDto.plainToClass(user);
+      return this.customResponse(res, userTransForm);
+    }
 
-    if (!user) throw new NotFoundException('User not Incorrect!');
+    return this.customResponse(
+      res,
+      {},
+      {
+        message: 'user Not Found',
+        code: 404,
+      },
+    );
+  }
 
-    return {
-      data: UserEntity.plainToClass(user),
-    };
+  @Get('/all')
+  @Roles(Role.MEMBER) // yeu cau la admin => ddang test
+  @UseGuards(AuthGuard, RoleGuard)
+  public async getAlluser(@Res() res: Response, @Query() query: UsersDto) {
+    const { _skip, _sort, _take, ...user } = query;
+    console.log(_skip, _sort, _take);
+
+    const { users, total } = await this._useService.findAllUser(
+      user as UsersDto,
+      {
+        _skip: _skip,
+        _sort: _sort || 'asc',
+        _take: _take,
+      },
+    );
+
+    if (users?.length > 0) {
+      const userTransForm = plainToClass(UserDto, users);
+      return this.customResponse(res, userTransForm, {
+        total,
+      });
+    }
+
+    return this.customResponse(
+      res,
+      {},
+      {
+        message: 'user Not Found',
+        code: 404,
+      },
+    );
+  }
+
+  @Get('search')
+  public async search(@Res() res: Response, @Query() query: SearchRequest) {
+    try {
+      console.log('adsfafdsafdsa');
+
+      const data = await this._useService.searchUser(query);
+      return this.customResponse(res, data);
+    } catch (error) {
+      console.log(error);
+    }
   }
 }

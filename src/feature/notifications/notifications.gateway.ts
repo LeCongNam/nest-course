@@ -12,22 +12,22 @@ export class NotificationsGateway {
   constructor(private readonly notificationsService: NotificationsService) {}
 
   @SubscribeMessage('createNotification')
-  create(@MessageBody() createNotificationDto: CreateNotificationDto) {
+  public create(@MessageBody() createNotificationDto: CreateNotificationDto) {
     return this.notificationsService.create(createNotificationDto);
   }
 
   @SubscribeMessage('findAllNotifications')
-  findAll() {
+  public findAll() {
     return this.notificationsService.findAll();
   }
 
   @SubscribeMessage('findOneNotification')
-  findOne(@MessageBody() id: number) {
+  public findOne(@MessageBody() id: number) {
     return this.notificationsService.findOne(id);
   }
 
   @SubscribeMessage('updateNotification')
-  update(@MessageBody() updateNotificationDto: UpdateNotificationDto) {
+  public update(@MessageBody() updateNotificationDto: UpdateNotificationDto) {
     return this.notificationsService.update(
       updateNotificationDto.id,
       updateNotificationDto,
@@ -35,7 +35,7 @@ export class NotificationsGateway {
   }
 
   @SubscribeMessage('removeNotification')
-  remove(@MessageBody() id: number) {
+  public remove(@MessageBody() id: number) {
     return this.notificationsService.remove(id);
   }
 }

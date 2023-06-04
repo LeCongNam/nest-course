@@ -1,54 +1,93 @@
-import { HttpException, HttpStatus, Injectable, Logger } from '@nestjs/common';
+import {
+  HttpException,
+  HttpStatus,
+  Inject,
+  InternalServerErrorException,
+  Logger,
+} from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { compare, genSalt, hashSync } from 'bcrypt';
 
-import { UserDto } from 'src/core/users/dto/user.dto';
-import { UserService } from 'src/core/users/user.service';
-import { LoginDto } from './dto/login.dto';
 import { InjectQueue } from '@nestjs/bull';
-import { Queue } from 'bull';
 import { JwtService } from '@nestjs/jwt';
-import { MailerService } from '@nestjs-modules/mailer';
+import { Queue } from 'bull';
+import { UserDto } from 'src/core/users/dto/user.dto';
+import { PrismaService } from 'src/shared/prisma/prisma.service';
+import { LoginDto } from './dto/login.dto';
+import { Provider } from '../search/constant';
+import { SearchService } from '../search/service/search.service';
+import { EventEmitter2 } from '@nestjs/event-emitter';
+import { EVENT_NAME } from 'src/evnet-emmiter/constants';
 
 export class AuthService {
   constructor(
-    private readonly userService: UserService,
     private readonly configService: ConfigService,
-    @InjectQueue('send-mail') private mailQueue: Queue,
-    private readonly mailerService: MailerService,
+    private readonly prisma: PrismaService,
     private readonly jwtService: JwtService,
+    @Inject(Provider.SearchService) private _searchService: SearchService,
+    private eventEmitter: EventEmitter2,
   ) {}
 
   private _logger = new Logger(AuthService.name);
 
-  async registerAccount(user: UserDto) {
-    const isUser = await this.userService.findOneUser(user);
-    console.log(`control`, isUser);
+  public async registerAccount(user: UserDto) {
+    try {
+      const isUser = await this.prisma.user.findFirst({
+        where: {
+          OR: [
+            {
+              username: user.username,
+            },
+            {
+              email: user.email,
+            },
+          ],
+        },
+      });
 
-    if (isUser) {
-      throw new HttpException('User is exist', HttpStatus.UNPROCESSABLE_ENTITY);
-    } else {
-      try {
-        user['password'] = await this.hashPassword(user.password);
-        const userCreated = await this.userService.saveUser(user);
-        const { accessToken } = await this.generateToken({
-          id: userCreated.id,
-          role: userCreated.role,
+      if (isUser) {
+        throw new HttpException(
+          'User is exist',
+          HttpStatus.UNPROCESSABLE_ENTITY,
+        );
+      } else {
+        user.password = await this.hashPassword(user.password);
+        const userCreated = await this.prisma.user.create({
+          data: user,
         });
 
-        this.mailQueue.add('send-mail', {
-          emailReceiver: user.email,
-          subject: 'Create New Account' + user.email,
+        const dt = await this._searchService.indexedDB(userCreated, 'user');
+        // console.log(dt);
+
+        // Queue mail
+        const linkVerify =
+          (await this.configService.getOrThrow('DOMAIN')) +
+          `/user/verify-email?token=${
+            this.generateToken({ email: userCreated.email }, false).accessToken
+          }`;
+        this.eventEmitter.emit(EVENT_NAME.SEND_MAIL, {
+          emailReceiver: userCreated.email,
+          subject: userCreated.username,
+          linkVerify,
         });
+
         this._logger.log('Register Account', userCreated.email);
         return userCreated;
-      } catch (error) {
-        this._logger.error(error);
       }
+    } catch (error) {
+      this._logger.log(error); // spam logger
+      throw new InternalServerErrorException();
     }
   }
 
-  generateToken(payload: any, isRefresh = false) {
+  public generateToken(
+    payload: {
+      id?: string;
+      roleId?: number;
+      [key: string]: any;
+    },
+    isRefresh = false,
+  ): { accessToken: string; refreshToken?: string } {
     let refreshToken = '';
     const accessToken = this.jwtService.sign(payload, {
       expiresIn: '30d',
@@ -67,7 +106,7 @@ export class AuthService {
     return { accessToken };
   }
 
-  async hashPassword(password: string): Promise<string> {
+  public async hashPassword(password: string): Promise<string> {
     try {
       const saltRounds = +this.configService.get('SALT_ROUNDS');
       const salt = await genSalt(saltRounds);
@@ -77,14 +116,19 @@ export class AuthService {
     }
   }
 
-  async loginWithEmail(userDto: LoginDto) {
-    const user = await this.userService.findOneUser({
-      email: userDto.email,
+  public async loginWithEmail(userDto: LoginDto) {
+    const user = await this.prisma.user.findFirst({
+      where: {
+        email: userDto.email,
+      },
     });
     if (!user) {
       throw new HttpException('User is not exist', HttpStatus.NOT_FOUND);
     }
-    const token = this.generateToken({ id: user.id, role: user.role }, true);
+    const token = this.generateToken(
+      { id: user.id, roleId: user.roleId },
+      true,
+    );
 
     const isValidPassword = await compare(userDto.password, user.password);
     if (!isValidPassword) {

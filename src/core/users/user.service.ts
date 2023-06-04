@@ -1,53 +1,77 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
+import {
+  HttpException,
+  HttpStatus,
+  Inject,
+  Injectable,
+  Logger,
+  Req,
+  forwardRef,
+} from '@nestjs/common';
 import { filterOptions } from 'src/shared/interface';
-import { Repository } from 'typeorm';
-import { GetUserDto } from './dto/get-user.dto';
+import { PrismaService } from 'src/shared/prisma/prisma.service';
 import { UserDto } from './dto/user.dto';
-import { UserEntity } from './entities/user.entity';
 import { FindOneUser } from './interface';
+import { AuthService } from '../auth/auth.service';
+import { UsersDto } from './dto/getAll-user';
+import { BaseMapping } from '../search/mapping/base.mapping';
+import { SearchService } from '../search/service/search.service';
+import { Provider } from '../search/constant';
+import { SearchRequest } from '@elastic/elasticsearch/lib/api/types';
 
 @Injectable()
 export class UserService {
   constructor(
-    @InjectRepository(UserEntity)
-    private userRepository: Repository<UserEntity>,
+    @Inject(forwardRef(() => AuthService))
+    private authService: AuthService,
+    private prisma: PrismaService,
+    @Inject(Provider.SearchService)
+    private readonly _searchService: SearchService,
   ) {}
+  private logger = new Logger(UserService.name);
 
   /**
    *
    * @param { FindOneUser } user
    * @returns UserEntity or null if user is not found
    */
-  async findOneUser(user: FindOneUser): Promise<UserEntity | null> {
-    const listFilters = [];
-    const listKey: any = Object.keys(user);
+  public async findOneUser(user: FindOneUser) {
+    try {
+      const data = await this.prisma.user.findFirst({
+        where: {
+          ...user,
+        },
+      });
 
-    for (const key of listKey) {
-      if (user.hasOwnProperty(key)) {
-        listFilters.push({ [key]: user[key] });
-      }
+      return data;
+    } catch (error) {
+      // console.log(error);
     }
-    // this query with or finder
-    const data = await this.userRepository.findOne({
-      where: listFilters,
-    });
-
-    return data;
   }
 
-  async finAllUser(
-    user: GetUserDto,
+  public async findAllUser(
+    user: UsersDto,
     filterOptions: filterOptions = {
       _skip: 10,
       _take: 0,
-      _sort: 'ASC',
+      _sort: 'asc',
     },
-  ): Promise<[UserEntity[], number]> {
-    return this.userRepository.findAndCount({
-      where: user,
-      ...filterOptions,
+  ) {
+    const users = await this.prisma.user.findMany({
+      where: {
+        AND: [user],
+      },
+      skip: +filterOptions._skip,
+      take: +filterOptions._take,
+      orderBy: {
+        createdAt: filterOptions._sort,
+      },
     });
+    const total = await this.prisma.user.count();
+
+    return {
+      users,
+      total,
+    };
   }
 
   /**
@@ -57,16 +81,18 @@ export class UserService {
    *
    * @description User with Unique ID, email and username. Not accepted duplicate data
    */
-  async saveUser(user: UserDto): Promise<UserEntity> {
-    const userExists = await this.userRepository.find({
-      where: [
-        {
-          username: user.username,
-        },
-        {
-          email: user.email,
-        },
-      ],
+  public async saveUser(user: UserDto) {
+    const userExists = await this.prisma.user.findFirstOrThrow({
+      where: {
+        AND: [
+          {
+            username: user.username,
+          },
+          {
+            email: user.email,
+          },
+        ],
+      },
     });
     if (Number(userExists) !== 0) {
       throw new HttpException(
@@ -74,36 +100,48 @@ export class UserService {
         HttpStatus.CONFLICT,
       );
     }
-    return await this.userRepository.save(user);
+    return await this.prisma.user.create({
+      data: {
+        ...user,
+      },
+    });
   }
 
-  async updateUser(user: UserDto): Promise<UserEntity> {
-    const getUser = await this.userRepository.findOneBy({
-      id: user.id,
+  public async updateUser(user: UserDto) {
+    const getUser = await this.prisma.user.findFirstOrThrow({
+      where: {
+        id: user.id,
+      },
     });
     if (getUser)
       throw new HttpException('User Not Found', HttpStatus.NOT_FOUND);
 
-    await this.userRepository.update(
-      {
+    await this.prisma.user.update({
+      data: user,
+      where: {
         id: getUser.id,
       },
-      getUser,
-    );
+    });
 
     return getUser;
   }
 
-  async deleteUser(user: GetUserDto): Promise<object> {
-    const getUser = await this.userRepository.findOneBy({
-      id: user.id,
+  public async deleteUser(user: UsersDto) {
+    const getUser = await this.prisma.user.delete({
+      where: {
+        id: user.id,
+      },
     });
     if (!getUser)
       throw new HttpException('User Not Found', HttpStatus.NOT_FOUND);
 
-    await this.userRepository.softDelete({
-      id: getUser.id,
+    const userDelete = await this.prisma.user.delete({
+      where: {
+        id: getUser.id,
+      },
     });
+
+    this.logger.warn('User Delete::', userDelete);
 
     return {
       deleted: true,
@@ -111,11 +149,13 @@ export class UserService {
     };
   }
 
-  async getProfile(id: string) {
-    const user = await this.findOneUser({ id });
-    if (!user) {
-      return false;
+  public async searchUser(query: SearchRequest) {
+    try {
+      console.log('SV');
+
+      return await this._searchService.searchQuery(query);
+    } catch (error) {
+      console.log(error);
     }
-    return user;
   }
 }
