@@ -15,6 +15,7 @@ import { SearchModule } from './core/search/search.module';
 import { UserModule } from './core/users/user.module';
 import { PrismaModule } from './shared/prisma/prisma.module';
 import { EventEmitterModule } from '@nestjs/event-emitter';
+import { InternalModule } from './core/service-internal/service-interal.module';
 
 @Module({
   imports: [
@@ -97,6 +98,7 @@ import { EventEmitterModule } from '@nestjs/event-emitter';
     //   ttl: 60,
     //   limit: 10,
     // }),
+    InternalModule,
     SearchModule,
     PrismaModule,
     UserModule,
