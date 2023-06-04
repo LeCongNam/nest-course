@@ -3,13 +3,14 @@ import { MailerService } from '@nestjs-modules/mailer';
 import { Process, Processor } from '@nestjs/bull';
 import { Job } from 'bull';
 
-@Processor('send-mail')
 @Injectable()
+@Processor('send-mail')
 export class BullMailService {
   constructor(private mailerService: MailerService) {}
   private _logger = new Logger(BullMailService.name);
+
   @Process('send-mail')
-  async handleSendMail(
+  public async handleSendMail(
     job: Job<{ emailReceiver: string; linkVerify: string; subject: string }>,
   ) {
     try {
@@ -18,7 +19,7 @@ export class BullMailService {
         from: 'namlem4u@gmail.com',
         subject: `${job.data.subject}`,
         context: {
-          link_verify: 'sdfsadfsafdsaf',
+          link_verify: job.data.linkVerify,
         },
         template: 'createEmail',
       });
@@ -29,6 +30,6 @@ export class BullMailService {
       );
     }
 
-    return {};
+    return;
   }
 }

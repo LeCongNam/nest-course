@@ -1,12 +1,7 @@
-import { CreateDateColumn, UpdateDateColumn, DeleteDateColumn } from 'typeorm';
-
 export class BaseEntityShare {
-  @CreateDateColumn()
-  createdAt: string;
+  createdAt: Date;
 
-  @UpdateDateColumn()
-  updatedAt: string;
+  updatedAt: Date;
 
-  @DeleteDateColumn()
-  deletedAt: string;
+  deletedAt: Date;
 }

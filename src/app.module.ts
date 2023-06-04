@@ -1,18 +1,21 @@
-import { ConfigModule, ConfigService } from '@nestjs/config';
 import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 
-import { AppService } from './app.service';
-import { UserModule } from './core/users/user.module';
-import { AuthModule } from './core/auth/auth.module';
+import { MailerModule } from '@nestjs-modules/mailer';
+import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handlebars.adapter';
 import { BullModule } from '@nestjs/bull';
 import { JwtModule } from '@nestjs/jwt';
 import { ThrottlerModule } from '@nestjs/throttler';
-import { MailerModule } from '@nestjs-modules/mailer';
-import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handlebars.adapter';
-import { I18nModule, QueryResolver, AcceptLanguageResolver } from 'nestjs-i18n';
-import { NotificationsModule } from './notifications/notifications.module';
+import { AcceptLanguageResolver, I18nModule, QueryResolver } from 'nestjs-i18n';
 import { join } from 'path';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
+import { AuthModule } from './core/auth/auth.module';
+import { SearchModule } from './core/search/search.module';
+import { UserModule } from './core/users/user.module';
+import { NotificationsModule } from './notifications/notifications.module';
+import { PrismaModule } from './shared/prisma/prisma.module';
+import { EventEmitterModule } from '@nestjs/event-emitter';
 
 @Module({
   imports: [
@@ -22,23 +25,6 @@ import { join } from 'path';
     ThrottlerModule.forRoot({
       ttl: 60,
       limit: 10,
-    }),
-    TypeOrmModule.forRootAsync({
-      imports: [ConfigModule],
-      useFactory: (configService: ConfigService) => ({
-        type: 'mysql',
-        host: configService.get('DB_HOST'),
-        port: +configService.get('DB_PORT'),
-        username: configService.get('DB_USER'),
-        password: configService.get('DB_PASSWORD'),
-        database: configService.get('DB_NAME'),
-        synchronize: true,
-        autoLoadEntities: true,
-        logger: 'advanced-console',
-        entities: ['dist/**/*.js'],
-        // migrations: ['src/**/*.ts'],
-      }),
-      inject: [ConfigService],
     }),
     BullModule.forRoot({
       redis: {
@@ -92,11 +78,37 @@ import { join } from 'path';
         AcceptLanguageResolver,
       ],
     }),
+    EventEmitterModule.forRoot({
+      // set this to `true` to use wildcards
+      wildcard: false,
+      // the delimiter used to segment namespaces
+      delimiter: '.',
+      // set this to `true` if you want to emit the newListener event
+      newListener: false,
+      // set this to `true` if you want to emit the removeListener event
+      removeListener: false,
+      // the maximum amount of listeners that can be assigned to an event
+      maxListeners: 10,
+      // show event name in memory leak message when more than maximum amount of listeners is assigned
+      verboseMemoryLeak: false,
+      // disable throwing uncaughtException if an error event is emitted and it has no listeners
+      ignoreErrors: false,
+    }),
+    // ThrottlerModule.forRoot({
+    //   ttl: 60,
+    //   limit: 10,
+    // }),
+    SearchModule,
+    PrismaModule,
     UserModule,
     AuthModule,
     NotificationsModule,
   ],
-  controllers: [],
+  controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule {
+  // public configure(consumer: MiddlewareConsumer) {
+  //   // consumer.apply(AppMiddleware).forRoutes('*');
+  // }
+}

@@ -12,11 +12,9 @@ export class BaseController {
       page?: number;
     },
   ) {
-    console.log(data);
-
-    return res.status(option?.code || 200).json({
+    return res.status(option?.code || 200).send({
       data: data,
-      option: option ? option : undefined,
+      ...option,
     });
   }
 }

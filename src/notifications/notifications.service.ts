@@ -4,23 +4,23 @@ import { UpdateNotificationDto } from './dto/update-notification.dto';
 
 @Injectable()
 export class NotificationsService {
-  create(createNotificationDto: CreateNotificationDto) {
+  public create(_createNotificationDto: CreateNotificationDto) {
     return 'This action adds a new notification';
   }
 
-  findAll() {
+  public findAll() {
     return `This action returns all notifications`;
   }
 
-  findOne(id: number) {
+  public findOne(id: number) {
     return `This action returns a #${id} notification`;
   }
 
-  update(id: number, updateNotificationDto: UpdateNotificationDto) {
+  public update(id: number, _updateNotificationDto: UpdateNotificationDto) {
     return `This action updates a #${id} notification`;
   }
 
-  remove(id: number) {
+  public remove(id: number) {
     return `This action removes a #${id} notification`;
   }
 }

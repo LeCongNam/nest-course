@@ -1,36 +1,89 @@
-import { Type } from 'class-transformer';
+import { Exclude, Expose, Type, plainToInstance } from 'class-transformer';
 import {
   IsBoolean,
+  IsEmail,
   IsNotEmpty,
   IsNumber,
   IsOptional,
   IsString,
-  IsUUID,
 } from 'class-validator';
 
 export class UserDto {
-  @IsUUID()
+  @IsNumber()
   @IsOptional()
+  @Expose()
   id: string;
 
   @IsString()
   @IsNotEmpty()
+  @Expose()
   username: string;
 
   @IsString()
   @IsNotEmpty()
+  @Expose()
+  phone: string;
+
+  @IsString()
+  @IsNotEmpty()
+  @IsOptional()
+  @Expose()
+  address: string;
+
+  @IsString()
+  @IsNotEmpty()
+  @IsEmail()
+  @Expose()
   email: string;
 
   @IsString()
   @IsNotEmpty()
+  @Expose()
+  firstName: string;
+
+  @IsString()
+  @IsNotEmpty()
+  @Expose()
+  lastName: string;
+
+  @IsString()
+  @IsNotEmpty()
+  @Exclude({ toClassOnly: true })
   password: string;
 
   @IsNumber()
   @IsOptional()
   @Type(() => Number)
-  role: number;
+  roleId: number;
 
   @IsBoolean()
   @IsOptional()
+  @Expose()
   deleted: boolean;
+
+  @IsOptional()
+  @Expose()
+  createdAt: Date;
+
+  @IsOptional()
+  @Expose()
+  updatedAt: Date;
+
+  @IsOptional()
+  @Expose()
+  deletedAt: Date;
+
+  @IsOptional()
+  @IsBoolean()
+  @Expose()
+  isDelete: boolean;
+
+  @IsBoolean()
+  @IsOptional()
+  @Expose()
+  isInactive: boolean;
+
+  public static plainToClass<T>(this: new (...args: any[]) => T, obj: T) {
+    return plainToInstance(this, obj, { excludeExtraneousValues: true });
+  }
 }

@@ -1,16 +1,15 @@
 import { Type } from 'class-transformer';
 import {
-  IsUUID,
-  IsString,
+  IsBoolean,
   IsNotEmpty,
   IsNumber,
-  IsBoolean,
   IsOptional,
+  IsString,
 } from 'class-validator';
 
 export class GetUserDto {
-  @IsUUID()
-  id: string;
+  @IsNumber()
+  id: number;
 
   @IsString()
   @IsOptional()

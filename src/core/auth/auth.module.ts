@@ -1,20 +1,17 @@
-import { BullModule } from '@nestjs/bull';
-import { Module, forwardRef } from '@nestjs/common';
-import { JwtService } from '@nestjs/jwt';
-import { UserModule } from 'src/core/users/user.module';
+import { Module } from '@nestjs/common';
+import { JwtModule, JwtService } from '@nestjs/jwt';
+import { BullMailService } from '../bull/services/bull.service';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
-import { BullMailService } from './queue/bull.service';
+import { BullModule } from '@nestjs/bull';
+import { ElasticsearchModule } from '@nestjs/elasticsearch';
+import { SearchModule } from '../search/search.module';
+import { HandleEventEmitterModule } from 'src/evnet-emmiter/event-emiter.module';
 
 @Module({
-  imports: [
-    forwardRef(() => UserModule),
-    BullModule.registerQueue({
-      name: 'send-mail',
-    }),
-  ],
+  imports: [JwtModule, SearchModule, HandleEventEmitterModule],
   controllers: [AuthController],
-  providers: [AuthService, JwtService, BullMailService],
+  providers: [AuthService, JwtService],
   exports: [AuthService],
 })
 export class AuthModule {}
