@@ -38,3 +38,5 @@ lerna-debug.log*
 .env
 
 /docker/mysql/
+micro_nest/dist
+micro_nest/node_modules
