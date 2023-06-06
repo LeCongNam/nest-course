@@ -9,7 +9,15 @@ import { SearchModule } from '../search/search.module';
 import { HandleEventEmitterModule } from 'src/evnet-emmiter/event-emiter.module';
 
 @Module({
-  imports: [JwtModule, SearchModule, HandleEventEmitterModule],
+  imports: [
+    JwtModule,
+    SearchModule,
+    HandleEventEmitterModule,
+    JwtModule.register({
+      secret: process.env.PRIVATE_KEY,
+      signOptions: { expiresIn: '30 days' },
+    }),
+  ],
   controllers: [AuthController],
   providers: [AuthService, JwtService],
   exports: [AuthService],

@@ -16,6 +16,7 @@ import { UserModule } from './core/users/user.module';
 import { PrismaModule } from './shared/prisma/prisma.module';
 import { EventEmitterModule } from '@nestjs/event-emitter';
 import { InternalModule } from './core/service-internal/service-interal.module';
+import { NotificationModule } from './core/auth/notification/notification.module';
 
 @Module({
   imports: [
@@ -69,9 +70,16 @@ import { InternalModule } from './core/service-internal/service-interal.module';
     }),
     I18nModule.forRoot({
       fallbackLanguage: 'en',
+      fallbacks: {
+        'en-CA': 'fr',
+        'en-*': 'en',
+        'fr-*': 'fr',
+        pt: 'pt-BR',
+      },
       loaderOptions: {
-        path: join(__dirname, '/feature/i18n/'),
+        path: join(__dirname, '/i18n/'),
         watch: true,
+        outDir: '/dist',
       },
       resolvers: [
         { use: QueryResolver, options: ['lang'] },
@@ -94,15 +102,16 @@ import { InternalModule } from './core/service-internal/service-interal.module';
       // disable throwing uncaughtException if an error event is emitted and it has no listeners
       ignoreErrors: false,
     }),
-    // ThrottlerModule.forRoot({
-    //   ttl: 60,
-    //   limit: 10,
-    // }),
+    ThrottlerModule.forRoot({
+      ttl: 60,
+      limit: 10,
+    }),
     InternalModule,
     SearchModule,
     PrismaModule,
     UserModule,
     AuthModule,
+    NotificationModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -2,33 +2,38 @@ import {
   WebSocketGateway,
   SubscribeMessage,
   MessageBody,
+  WebSocketServer,
 } from '@nestjs/websockets';
-import { NotificationsService } from './notifications.service';
+import { NotificationService } from './notification.service';
 import { CreateNotificationDto } from './dto/create-notification.dto';
 import { UpdateNotificationDto } from './dto/update-notification.dto';
+import { Server } from 'http';
 
-@WebSocketGateway()
-export class NotificationsGateway {
-  constructor(private readonly notificationsService: NotificationsService) {}
+@WebSocketGateway(3001, { transports: ['websocket'] })
+export class NotificationGateway {
+  @WebSocketServer()
+  server: Server;
+
+  constructor(private readonly notificationService: NotificationService) {}
 
   @SubscribeMessage('createNotification')
   public create(@MessageBody() createNotificationDto: CreateNotificationDto) {
-    return this.notificationsService.create(createNotificationDto);
+    return this.notificationService.create(createNotificationDto);
   }
 
-  @SubscribeMessage('findAllNotifications')
+  @SubscribeMessage('findAllNotification')
   public findAll() {
-    return this.notificationsService.findAll();
+    return this.notificationService.findAll();
   }
 
   @SubscribeMessage('findOneNotification')
   public findOne(@MessageBody() id: number) {
-    return this.notificationsService.findOne(id);
+    return this.notificationService.findOne(id);
   }
 
   @SubscribeMessage('updateNotification')
   public update(@MessageBody() updateNotificationDto: UpdateNotificationDto) {
-    return this.notificationsService.update(
+    return this.notificationService.update(
       updateNotificationDto.id,
       updateNotificationDto,
     );
@@ -36,6 +41,6 @@ export class NotificationsGateway {
 
   @SubscribeMessage('removeNotification')
   public remove(@MessageBody() id: number) {
-    return this.notificationsService.remove(id);
+    return this.notificationService.remove(id);
   }
 }

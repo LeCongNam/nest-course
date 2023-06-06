@@ -9,7 +9,11 @@
         "include": "templates/**/**",
         "outDir": "dist"
       },
-      { "include": "/feature/i18n/**/*", "watchAssets": true }
+      {
+        "include": "i18n/**/*",
+        "watchAssets": true,
+        "outDir": "dist/src"
+      }
     ]
   }
 }
