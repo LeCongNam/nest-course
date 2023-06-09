@@ -25,7 +25,7 @@ model User {
   email      String    @unique
   password   String
   address    String?
-  phone      String
+  phone      String?   @unique
   roleId     Int       @default(1)
   role       Role      @relation(fields: [roleId], references: [id])
   createdAt  DateTime  @default(now())

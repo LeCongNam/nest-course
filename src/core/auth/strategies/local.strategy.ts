@@ -1,12 +1,16 @@
-import { Injectable } from '@nestjs/common/decorators';
+import { Inject, Injectable } from '@nestjs/common/decorators';
 import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
 import { UserService } from 'src/core/users/user.service';
 import { LoginDto } from '../dto/login.dto';
+import { forwardRef } from '@nestjs/common';
 
 @Injectable()
-export class JwtStrategy extends PassportStrategy(Strategy) {
-  constructor(private _userService: UserService) {
+export class LocalStrategy extends PassportStrategy(Strategy) {
+  constructor(
+    @Inject(forwardRef(() => UserService))
+    private _userService: UserService,
+  ) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       ignoreExpiration: false,

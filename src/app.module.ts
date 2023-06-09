@@ -15,7 +15,7 @@ import { SearchModule } from './core/search/search.module';
 import { UserModule } from './core/users/user.module';
 import { PrismaModule } from './shared/prisma/prisma.module';
 import { EventEmitterModule } from '@nestjs/event-emitter';
-import { InternalModule } from './core/service-internal/service-interal.module';
+import { InternalModule } from './core/rbmq/service-interal.module';
 import { NotificationModule } from './core/auth/notification/notification.module';
 
 @Module({

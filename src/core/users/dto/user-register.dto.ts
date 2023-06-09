@@ -21,6 +21,7 @@ export class UserRegisterDto {
 
   @IsString()
   @IsNotEmpty()
+  @IsOptional()
   @Expose()
   phone: string;
 

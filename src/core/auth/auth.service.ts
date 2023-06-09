@@ -4,20 +4,20 @@ import {
   Inject,
   InternalServerErrorException,
   Logger,
+  forwardRef,
 } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { compare, genSalt, hashSync } from 'bcrypt';
 
-import { InjectQueue } from '@nestjs/bull';
+import { EventEmitter2 } from '@nestjs/event-emitter';
 import { JwtService } from '@nestjs/jwt';
-import { Queue } from 'bull';
 import { UserDto } from 'src/core/users/dto/user.dto';
 import { PrismaService } from 'src/shared/prisma/prisma.service';
-import { LoginDto } from './dto/login.dto';
 import { Provider } from '../search/constant';
 import { SearchService } from '../search/service/search.service';
-import { EventEmitter2 } from '@nestjs/event-emitter';
-import { EVENT_NAME } from 'src/evnet-emmiter/constants';
+import { LoginDto } from './dto/login.dto';
+import { EVENT_NAME } from 'src/event-emitter/constants';
+import { UserService } from '../users/user.service';
 
 export class AuthService {
   constructor(
@@ -25,6 +25,7 @@ export class AuthService {
     private readonly prisma: PrismaService,
     private readonly jwtService: JwtService,
     @Inject(Provider.SearchService) private _searchService: SearchService,
+    private _userService: UserService,
     private eventEmitter: EventEmitter2,
   ) {}
 
@@ -56,8 +57,7 @@ export class AuthService {
           data: user,
         });
 
-        const dt = await this._searchService.indexedDB(userCreated, 'user');
-        // console.log(dt);
+        const es = await this._searchService.indexedDB(userCreated, 'user');
 
         // Queue mail
         const linkVerify =

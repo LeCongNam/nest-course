@@ -1,12 +1,12 @@
-import { Module } from '@nestjs/common';
+import { Module, forwardRef } from '@nestjs/common';
 import { JwtModule, JwtService } from '@nestjs/jwt';
-import { BullMailService } from '../bull/services/bull.service';
+import { PassportModule } from '@nestjs/passport';
+import { HandleEventEmitterModule } from 'src/event-emitter/event-emiter.module';
+import { SearchModule } from '../search/search.module';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
-import { BullModule } from '@nestjs/bull';
-import { ElasticsearchModule } from '@nestjs/elasticsearch';
-import { SearchModule } from '../search/search.module';
-import { HandleEventEmitterModule } from 'src/evnet-emmiter/event-emiter.module';
+import { LocalStrategy } from './strategies/local.strategy';
+import { UserModule } from '../users/user.module';
 
 @Module({
   imports: [
@@ -17,9 +17,11 @@ import { HandleEventEmitterModule } from 'src/evnet-emmiter/event-emiter.module'
       secret: process.env.PRIVATE_KEY,
       signOptions: { expiresIn: '30 days' },
     }),
+    PassportModule,
+    UserModule,
   ],
   controllers: [AuthController],
-  providers: [AuthService, JwtService],
+  providers: [AuthService, JwtService, LocalStrategy],
   exports: [AuthService],
 })
 export class AuthModule {}

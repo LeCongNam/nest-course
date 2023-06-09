@@ -1,32 +1,14 @@
-import { SearchRequest } from '@elastic/elasticsearch/lib/api/types';
-import {
-  HttpException,
-  HttpStatus,
-  Inject,
-  Injectable,
-  Logger,
-  forwardRef,
-} from '@nestjs/common';
+import { HttpException, HttpStatus, Logger } from '@nestjs/common';
 import { User } from '@prisma/client';
-import { filterOptions } from 'src/shared/interface';
 import { PrismaService } from 'src/shared/prisma/prisma.service';
-import { AuthService } from '../auth/auth.service';
-import { Provider } from '../search/constant';
-import { SearchService } from '../search/service/search.service';
-import { UsersDto } from './dto/getAll-user';
-import { UserDto } from './dto/user.dto';
-import { FindOneUser } from './interface';
+import { UsersDto } from '../dto/getAll-user';
+import { UserDto } from '../dto/user.dto';
+import { FindOneUser } from '../interface';
+import { filterOptions } from 'src/shared/interface';
 
-@Injectable()
-export class UserService {
-  constructor(
-    @Inject(forwardRef(() => AuthService))
-    private authService: AuthService,
-    private prisma: PrismaService,
-    @Inject(Provider.SearchService)
-    private readonly _searchService: SearchService,
-  ) {}
-  private logger = new Logger(UserService.name);
+export class UserEntity {
+  constructor(private prisma: PrismaService) {}
+  private readonly _logger = new Logger(UserEntity.name);
 
   /**
    *
@@ -140,21 +122,11 @@ export class UserService {
       },
     });
 
-    this.logger.warn('User Delete::', userDelete);
+    this._logger.warn('User Delete::', userDelete);
 
     return {
       deleted: true,
       id: getUser.id,
     };
-  }
-
-  public async searchUser(query: SearchRequest) {
-    try {
-      console.log('SV');
-
-      return await this._searchService.searchQuery(query);
-    } catch (error) {
-      console.log(error);
-    }
   }
 }
