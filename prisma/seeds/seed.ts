@@ -31,15 +31,26 @@ async function initData() {
 
   await prisma.user.upsert({
     create: {
-      email: 'admin@support.com',
       firstName: 'admin',
       lastName: 'support',
       username: 'admin-support',
+      email: 'admin@support.com',
       password: hashSync(process.env.PASSWORD_ADMIN, +process.env.SALT_ROUND),
       roleId: 2,
     },
     where: {
       email: 'admin@support.com',
+    },
+    update: {},
+  });
+
+  await prisma.category.upsert({
+    create: {
+      id: 1,
+      name: 'Ao Dai',
+    },
+    where: {
+      id: 1,
     },
     update: {},
   });

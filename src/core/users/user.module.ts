@@ -5,11 +5,12 @@ import { UserController } from './user.controller';
 import { UserService } from './user.service';
 import { JwtService } from '@nestjs/jwt';
 import { SearchModule } from '../search/search.module';
+import { UserRepository } from './repository/user.repository';
 
 @Module({
   imports: [forwardRef(() => AuthModule), SearchModule],
   controllers: [UserController],
-  providers: [UserService, PrismaService, JwtService],
-  exports: [UserService],
+  providers: [UserService, PrismaService, JwtService, UserRepository],
+  exports: [UserService, UserRepository],
 })
 export class UserModule {}

@@ -1,9 +1,8 @@
 import { Type } from 'class-transformer';
 import {
-  IsEnum,
   IsInt,
   IsNotEmpty,
-  IsNumber,
+  IsOptional,
   IsString,
   Max,
   Min,
@@ -28,6 +27,7 @@ export class BaseFilter {
 
   @IsString()
   @IsNotEmpty()
-  @IsEnum(Sort)
-  _sort: 'asc' | 'desc';
+  // @IsEnum(Sort)
+  @IsOptional()
+  _sort: string;
 }

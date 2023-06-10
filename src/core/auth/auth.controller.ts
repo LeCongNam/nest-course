@@ -3,18 +3,18 @@ import {
   Controller,
   Post,
   Res,
+  UseGuards,
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
 import { Response } from 'express';
 
-import { plainToClass } from 'class-transformer';
 import { UserDto } from 'src/core/users/dto/user.dto';
 import { IsPublic } from 'src/shared/decorator';
 import { BaseController } from 'src/shared/res/custom-response';
+import { UserRegisterDto } from '../users/dto/user-register.dto';
 import { AuthService } from './auth.service';
 import { LoginDto } from './dto/login.dto';
-import { UserRegisterDto } from '../users/dto/user-register.dto';
 
 @Controller('auth')
 export class AuthController extends BaseController {
@@ -31,6 +31,7 @@ export class AuthController extends BaseController {
     return this.customResponse(res, newUser);
   }
 
+  // @UseGuards(LocalAuthGuard)
   @Post('/login')
   @UsePipes(new ValidationPipe())
   @IsPublic()

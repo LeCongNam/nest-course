@@ -37,6 +37,7 @@ lerna-debug.log*
 # Environment
 .env
 
-/docker/mysql/
+/docker/mysql/*
+/docker/rabbitmq/*
 micro_nest/dist
 micro_nest/node_modules

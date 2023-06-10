@@ -1,5 +1,4 @@
 import { HttpException, HttpStatus, Logger } from '@nestjs/common';
-import { User } from '@prisma/client';
 import { PrismaService } from 'src/shared/prisma/prisma.service';
 import { UsersDto } from '../dto/getAll-user';
 import { UserDto } from '../dto/user.dto';
@@ -15,7 +14,7 @@ export class UserEntity {
    * @param { FindOneUser } user
    * @returns UserEntity or null if user is not found
    */
-  public async findOneUser(user: FindOneUser): Promise<User | null> {
+  public async findOneUser(user: FindOneUser) {
     try {
       const data = await this.prisma.user.findFirst({
         where: {
@@ -34,7 +33,9 @@ export class UserEntity {
     filterOptions: filterOptions = {
       _skip: 10,
       _take: 0,
-      _sort: 'asc',
+      _sort: {
+        createdAt: 'desc',
+      },
     },
   ) {
     const users = await this.prisma.user.findMany({
@@ -43,9 +44,7 @@ export class UserEntity {
       },
       skip: +filterOptions._skip,
       take: +filterOptions._take,
-      orderBy: {
-        createdAt: filterOptions._sort,
-      },
+      orderBy: filterOptions._sort,
     });
     const total = await this.prisma.user.count();
 

@@ -14,7 +14,8 @@ export class BaseController {
   ) {
     return res.status(option?.code || 200).send({
       data: data,
-      ...option,
+      pagination:
+        (option && { ...option, page: option?.page + 1 }) || undefined,
     });
   }
 }

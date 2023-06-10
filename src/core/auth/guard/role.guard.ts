@@ -11,7 +11,6 @@ export class RoleGuard implements CanActivate {
     const req = context.switchToHttp().getRequest();
 
     const roles = this.reflector.get<number[]>('roles', context.getHandler());
-    // console.log(`Roles :: `, req.ip);
 
     if (!roles && roles?.length === 0) {
       return false;
@@ -24,14 +23,13 @@ export class RoleGuard implements CanActivate {
 
     const token = tokenBearer.split(' ')[1];
     const tokenDecode = this.jwtService.decode(token);
+
     if (!tokenDecode) {
       return false;
     }
-    // console.log(`Token Decode::`, tokenDecode);
 
     req.user = tokenDecode;
 
-    // const user = request.user;
     return this.matchRoles(roles, tokenDecode['roleId']);
   }
 
@@ -43,6 +41,7 @@ export class RoleGuard implements CanActivate {
         result = true;
       }
     });
+    console.log('Result:: ', result);
 
     return result;
   }

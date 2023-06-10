@@ -7,22 +7,21 @@ import {
   Logger,
   forwardRef,
 } from '@nestjs/common';
-import { User } from '@prisma/client';
 import { filterOptions } from 'src/shared/interface';
-import { PrismaService } from 'src/shared/prisma/prisma.service';
 import { AuthService } from '../auth/auth.service';
 import { Provider } from '../search/constant';
 import { SearchService } from '../search/service/search.service';
 import { UsersDto } from './dto/getAll-user';
 import { UserDto } from './dto/user.dto';
 import { FindOneUser } from './interface';
+import { UserRepository } from './repository/user.repository';
 
 @Injectable()
 export class UserService {
   constructor(
     @Inject(forwardRef(() => AuthService))
     private authService: AuthService,
-    private prisma: PrismaService,
+    private _userRepository: UserRepository,
     @Inject(Provider.SearchService)
     private readonly _searchService: SearchService,
   ) {}
@@ -33,12 +32,10 @@ export class UserService {
    * @param { FindOneUser } user
    * @returns UserEntity or null if user is not found
    */
-  public async findOneUser(user: FindOneUser): Promise<User | null> {
+  public async findOneUser(user: FindOneUser) {
     try {
-      const data = await this.prisma.user.findFirst({
-        where: {
-          ...user,
-        },
+      const data = await this._userRepository.getOne({
+        ...user,
       });
 
       return data;
@@ -52,25 +49,19 @@ export class UserService {
     filterOptions: filterOptions = {
       _skip: 10,
       _take: 0,
-      _sort: 'asc',
+      _sort: {
+        createdAt: 'desc',
+      },
     },
   ) {
-    const users = await this.prisma.user.findMany({
-      where: {
-        AND: [user],
-      },
-      skip: +filterOptions._skip,
-      take: +filterOptions._take,
-      orderBy: {
-        createdAt: filterOptions._sort,
-      },
-    });
-    const total = await this.prisma.user.count();
+    console.log(filterOptions._sort);
 
-    return {
-      users,
-      total,
-    };
+    const users = await this._userRepository.getList({
+      AND: [user],
+      ...filterOptions,
+    });
+
+    return users;
   }
 
   /**
@@ -81,17 +72,15 @@ export class UserService {
    * @description User with Unique ID, email and username. Not accepted duplicate data
    */
   public async saveUser(user: UserDto) {
-    const userExists = await this.prisma.user.findFirstOrThrow({
-      where: {
-        AND: [
-          {
-            username: user.username,
-          },
-          {
-            email: user.email,
-          },
-        ],
-      },
+    const userExists = await this._userRepository.getOne({
+      AND: [
+        {
+          username: user.username,
+        },
+        {
+          email: user.email,
+        },
+      ],
     });
     if (Number(userExists) !== 0) {
       throw new HttpException(
@@ -99,7 +88,7 @@ export class UserService {
         HttpStatus.CONFLICT,
       );
     }
-    return await this.prisma.user.create({
+    return await this._userRepository.create({
       data: {
         ...user,
       },
@@ -107,26 +96,19 @@ export class UserService {
   }
 
   public async updateUser(user: UserDto) {
-    const getUser = await this.prisma.user.findFirstOrThrow({
-      where: {
-        id: user.id,
-      },
+    const getUser = await this._userRepository.getOne({
+      id: user.id,
     });
     if (getUser)
       throw new HttpException('User Not Found', HttpStatus.NOT_FOUND);
 
-    await this.prisma.user.update({
-      data: user,
-      where: {
-        id: getUser.id,
-      },
-    });
+    await this._userRepository.update(user.id, user);
 
     return getUser;
   }
 
   public async deleteUser(user: UsersDto) {
-    const getUser = await this.prisma.user.delete({
+    const getUser = await this._userRepository.delete({
       where: {
         id: user.id,
       },
@@ -134,7 +116,7 @@ export class UserService {
     if (!getUser)
       throw new HttpException('User Not Found', HttpStatus.NOT_FOUND);
 
-    const userDelete = await this.prisma.user.delete({
+    const userDelete = await this._userRepository.delete({
       where: {
         id: getUser.id,
       },

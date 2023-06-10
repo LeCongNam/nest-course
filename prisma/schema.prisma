@@ -35,13 +35,28 @@ model User {
   isInactive Boolean   @default(false)
 }
 
+model Category {
+  id         Int       @id
+  name       String    @unique
+  desc       String?
+  Product    Product[]
+  isDelete   Boolean   @default(false)
+  isInactive Boolean   @default(false)
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+}
+
 model Product {
-  id        String   @id @default(nanoid()) @db.VarChar(11)
-  p_name    String   @unique
-  p_price   Decimal
-  p_desc    String   @db.Text
-  status    String   @default("pending")
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  deletedAt DateTime
+  id         String    @id @default(nanoid()) @db.VarChar(50)
+  p_name     String    @unique
+  p_price    Decimal
+  p_desc     String    @db.Text
+  thumbnails Json
+  cover      String
+  status     String    @default("pending")
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  deletedAt  DateTime?
+  categoryId Int
+  Category   Category  @relation(fields: [categoryId], references: [id])
 }

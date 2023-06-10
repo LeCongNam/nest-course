@@ -4,7 +4,6 @@ import {
   Inject,
   InternalServerErrorException,
   Logger,
-  forwardRef,
 } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { compare, genSalt, hashSync } from 'bcrypt';
@@ -12,12 +11,12 @@ import { compare, genSalt, hashSync } from 'bcrypt';
 import { EventEmitter2 } from '@nestjs/event-emitter';
 import { JwtService } from '@nestjs/jwt';
 import { UserDto } from 'src/core/users/dto/user.dto';
+import { EVENT_NAME } from 'src/event-emitter/constants';
 import { PrismaService } from 'src/shared/prisma/prisma.service';
 import { Provider } from '../search/constant';
 import { SearchService } from '../search/service/search.service';
-import { LoginDto } from './dto/login.dto';
-import { EVENT_NAME } from 'src/event-emitter/constants';
 import { UserService } from '../users/user.service';
+import { LoginDto } from './dto/login.dto';
 
 export class AuthService {
   constructor(

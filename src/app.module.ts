@@ -4,6 +4,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MailerModule } from '@nestjs-modules/mailer';
 import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handlebars.adapter';
 import { BullModule } from '@nestjs/bull';
+import { EventEmitterModule } from '@nestjs/event-emitter';
 import { JwtModule } from '@nestjs/jwt';
 import { ThrottlerModule } from '@nestjs/throttler';
 import { AcceptLanguageResolver, I18nModule, QueryResolver } from 'nestjs-i18n';
@@ -11,12 +12,12 @@ import { join } from 'path';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './core/auth/auth.module';
+import { NotificationModule } from './core/auth/notification/notification.module';
+import { ProductsModule } from './core/products/products.module';
+import { InternalModule } from './core/rbmq/service-interal.module';
 import { SearchModule } from './core/search/search.module';
 import { UserModule } from './core/users/user.module';
 import { PrismaModule } from './shared/prisma/prisma.module';
-import { EventEmitterModule } from '@nestjs/event-emitter';
-import { InternalModule } from './core/rbmq/service-interal.module';
-import { NotificationModule } from './core/auth/notification/notification.module';
 
 @Module({
   imports: [
@@ -31,6 +32,8 @@ import { NotificationModule } from './core/auth/notification/notification.module
       redis: {
         host: 'localhost',
         port: 6379,
+        // password: process.env.RABBITMQ_DEFAULT_PASS,
+        // username: process.env.RABBITMQ_DEFAULT_USER,
       },
     }),
     MailerModule.forRootAsync({
@@ -50,7 +53,7 @@ import { NotificationModule } from './core/auth/notification/notification.module
           from: '"nest-modules" <modules@nestjs.com>',
         },
         template: {
-          dir: __dirname + '/templates',
+          dir: process.cwd() + '/src/templates',
           adapter: new HandlebarsAdapter(),
           options: {
             strict: true,
@@ -112,6 +115,7 @@ import { NotificationModule } from './core/auth/notification/notification.module
     UserModule,
     AuthModule,
     NotificationModule,
+    ProductsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
