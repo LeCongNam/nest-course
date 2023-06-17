@@ -1,27 +1,30 @@
-import { Exclude, Expose, Type, plainToInstance } from 'class-transformer';
+import { Exclude, Expose, plainToInstance } from 'class-transformer';
 import {
-  IsBoolean,
   IsEmail,
+  IsEnum,
   IsNotEmpty,
   IsNumber,
   IsOptional,
   IsString,
 } from 'class-validator';
+import { RoleEntity } from '../entity/role.entity';
+import { Role } from '../constant';
 
 export class UserDto {
   @IsNumber()
   @IsOptional()
   @Expose()
-  id: string;
+  id?: string;
 
   @IsString()
   @IsNotEmpty()
   @Expose()
-  username: string;
+  userName: string;
 
   @IsString()
   @IsNotEmpty()
   @Expose()
+  @IsOptional()
   phone: string;
 
   @IsString()
@@ -30,8 +33,6 @@ export class UserDto {
   @Expose()
   address: string;
 
-  @IsString()
-  @IsNotEmpty()
   @IsEmail()
   @Expose()
   email: string;
@@ -47,19 +48,15 @@ export class UserDto {
   lastName: string;
 
   @IsString()
-  @IsNotEmpty()
-  @Exclude({ toClassOnly: true })
+  // @IsNotEmpty()
   password: string;
 
   @IsNumber()
+  @IsEnum({
+    default: Role.MEMBER,
+  })
   @IsOptional()
-  @Type(() => Number)
-  roleId: number;
-
-  @IsBoolean()
-  @IsOptional()
-  @Expose()
-  deleted: boolean;
+  roleId: RoleEntity;
 
   @IsOptional()
   @Expose()
@@ -72,16 +69,6 @@ export class UserDto {
   @IsOptional()
   @Expose()
   deletedAt: Date;
-
-  @IsOptional()
-  @IsBoolean()
-  @Expose()
-  isDelete: boolean;
-
-  @IsBoolean()
-  @IsOptional()
-  @Expose()
-  isInactive: boolean;
 
   public static plainToClass<T>(this: new (...args: any[]) => T, obj: T) {
     return plainToInstance(this, obj, { excludeExtraneousValues: true });

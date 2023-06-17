@@ -1,9 +1,11 @@
 import { SearchRequest } from '@elastic/elasticsearch/lib/api/types';
 import {
+  Body,
   Controller,
   Get,
   Param,
   ParseUUIDPipe,
+  Put,
   Query,
   Res,
   UseGuards,
@@ -15,9 +17,10 @@ import { AuthGuard } from '../auth/guard/auth.guard';
 import { RoleGuard } from '../auth/guard/role.guard';
 import { Role } from './constant';
 import { Roles } from './decorator';
-import { UsersDto } from './dto/getAll-user';
 import { UserDto } from './dto/user.dto';
 import { UserService } from './user.service';
+import { AllUser } from './dto/getAll-user';
+import { UpdateUser } from './dto/update-user.dto';
 
 @Controller('users')
 export class UserController extends BaseController {
@@ -26,18 +29,17 @@ export class UserController extends BaseController {
   }
 
   @Get('profile/:id')
-  @Roles(Role.MEMBER, Role.ADMIN)
   @UseGuards(AuthGuard, RoleGuard)
+  @Roles(Role.MEMBER, Role.ADMIN)
   public async getProfile(
     @Param('id', ParseUUIDPipe) id: string,
     @Res() res: Response,
   ) {
-    const user = await this._useService.findOneUser({ id });
+    const user = await this._useService.findOneUserById(id);
     if (user) {
       const userTransForm = UserDto.plainToClass(user);
       return this.customResponse(res, userTransForm);
     }
-
     return this.customResponse(
       res,
       {},
@@ -49,25 +51,18 @@ export class UserController extends BaseController {
   }
 
   @Get('/all')
-  @Roles(Role.ADMIN) // yeu cau la admin => ddang test
-  @UseGuards(AuthGuard, RoleGuard)
-  public async getAlluser(@Res() res: Response, @Query() query: UsersDto) {
+  // @UseGuards(AuthGuard, RoleGuard)
+  @Roles(Role.ADMIN)
+  public async getAlluser(@Res() res: Response, @Query() query: AllUser) {
     const { _skip, _sort, _take, ...user } = query;
 
-    const [users, pagination] = await this._useService.findAllUser(
-      user as UsersDto,
-      {
-        _skip,
-        _take,
-        _sort: _sort && JSON.parse(_sort),
-      },
-    );
+    const [users, total] = await this._useService.findAllUser(user);
 
     if (users?.length > 0) {
       const userTransForm = plainToClass(UserDto, users);
       return this.customResponse(res, userTransForm, {
-        ...pagination,
         page: +query._skip,
+        total: total,
       });
     }
 
@@ -80,11 +75,18 @@ export class UserController extends BaseController {
   @Get('search')
   @Roles(Role.ADMIN)
   public async search(@Res() res: Response, @Query() query: SearchRequest) {
-    try {
-      const data = await this._useService.searchUser(query);
-      return this.customResponse(res, data);
-    } catch (error) {
-      // console.log(error);
-    }
+    const data = await this._useService.searchUser(query);
+    return this.customResponse(res, data);
+  }
+
+  @Put('profile/:id')
+  public async updateProfile(
+    @Res() res: Response,
+    @Param('id', ParseUUIDPipe) id: string,
+    @Body() user: UpdateUser,
+  ) {
+    const data = await this._useService.updateUser(id, user);
+
+    return this.customResponse(res, data);
   }
 }

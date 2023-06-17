@@ -2,6 +2,7 @@ import { Type } from 'class-transformer';
 import {
   IsInt,
   IsNotEmpty,
+  IsObject,
   IsOptional,
   IsString,
   Max,
@@ -17,17 +18,15 @@ export class BaseFilter {
   @IsInt()
   @Min(0)
   @Type(() => Number)
-  _skip: number;
+  _skip?: number;
 
   @IsInt()
   @Min(0)
   @Max(100)
   @Type(() => Number)
-  _take: number;
+  _take?: number;
 
-  @IsString()
-  @IsNotEmpty()
-  // @IsEnum(Sort)
   @IsOptional()
-  _sort: string;
+  @IsObject()
+  _sort?: object;
 }

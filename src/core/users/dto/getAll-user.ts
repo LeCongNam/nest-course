@@ -8,8 +8,9 @@ import {
   IsString,
 } from 'class-validator';
 import { BaseFilter } from 'src/shared/entities/BaseFilter';
+import { RoleEntity } from '../entity/role.entity';
 
-export class UsersDto extends BaseFilter {
+export class AllUser extends BaseFilter {
   constructor() {
     super();
   }
@@ -19,10 +20,12 @@ export class UsersDto extends BaseFilter {
   id: string;
 
   @IsString()
+  @IsOptional()
   @IsNotEmpty()
   @Expose()
   username: string;
 
+  @IsOptional()
   @IsString()
   @IsNotEmpty()
   @Expose()
@@ -37,19 +40,23 @@ export class UsersDto extends BaseFilter {
   @IsString()
   @IsNotEmpty()
   @IsEmail()
+  @IsOptional()
   @Expose()
   email: string;
 
   @IsString()
   @IsNotEmpty()
+  @IsOptional()
   @Expose()
   firstName: string;
 
   @IsString()
   @IsNotEmpty()
+  @IsOptional()
   @Expose()
   lastName: string;
 
+  @IsOptional()
   @IsString()
   @IsNotEmpty()
   @Exclude({ toClassOnly: true })
@@ -58,7 +65,7 @@ export class UsersDto extends BaseFilter {
   @IsNumber()
   @IsOptional()
   @Type(() => Number)
-  roleId: number;
+  roleId: RoleEntity;
 
   @IsBoolean()
   @IsOptional()
@@ -82,10 +89,10 @@ export class UsersDto extends BaseFilter {
   @Expose()
   isDelete: boolean;
 
-  @IsBoolean()
-  @IsOptional()
-  @Expose()
-  isInactive: boolean;
+  // @IsBoolean()
+  // @IsOptional()
+  // @Expose()
+  // isInactive: boolean;
 
   public static plainToClass<T>(this: new (...args: any[]) => T, obj: T) {
     return plainToInstance(this, obj, { excludeExtraneousValues: true });

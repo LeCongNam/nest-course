@@ -19,15 +19,13 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
   }
 
   public async validate(payload: LoginDto) {
-    const user = await this._userService.findOneUser({
-      email: payload.email,
-    });
-    if (!user) return false;
-
-    if (user?.password !== payload.password) {
-      return false;
-    }
-
-    return user;
+    // const user = await this._userService.findOneUser({
+    //   email: payload.email,
+    // });
+    // if (!user) return false;
+    // if (user?.password !== payload.password) {
+    //   return false;
+    // }
+    // return user;
   }
 }

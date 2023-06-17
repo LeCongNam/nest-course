@@ -41,8 +41,6 @@ export class RoleGuard implements CanActivate {
         result = true;
       }
     });
-    console.log('Result:: ', result);
-
     return result;
   }
 }

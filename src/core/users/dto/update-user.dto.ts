@@ -1,38 +1,69 @@
-import { Type } from 'class-transformer';
+import { Expose, Type } from 'class-transformer';
 import {
   IsBoolean,
+  IsEmail,
+  IsEnum,
   IsNotEmpty,
   IsNumber,
   IsOptional,
   IsString,
 } from 'class-validator';
+import { RoleEntity } from '../entity/role.entity';
 
-export class GetUserDto {
+export class UpdateUser {
   @IsNumber()
-  id: number;
+  @IsOptional()
+  @Expose()
+  id?: string;
 
   @IsString()
-  @IsOptional()
   @IsNotEmpty()
-  username: string;
+  @Expose()
+  userName: string;
 
   @IsString()
-  @IsOptional()
   @IsNotEmpty()
+  @Expose()
+  @IsOptional()
+  phone: string;
+
+  @IsString()
+  @IsNotEmpty()
+  @IsOptional()
+  @Expose()
+  address: string;
+
+  @IsEmail()
+  @Expose()
   email: string;
 
   @IsString()
   @IsNotEmpty()
-  @IsOptional()
-  password: string;
+  @Expose()
+  firstName: string;
 
-  @IsNumber()
+  @IsString()
+  @IsNotEmpty()
+  @Expose()
+  lastName: string;
+
+  @IsString()
   @IsOptional()
   @IsNotEmpty()
-  @Type(() => Number)
-  role: string;
+  password: string;
 
   @IsOptional()
-  @IsBoolean()
-  deleted: boolean;
+  roleId: RoleEntity;
+
+  @IsOptional()
+  @Expose()
+  createdAt: Date;
+
+  @IsOptional()
+  @Expose()
+  updatedAt: Date;
+
+  @IsOptional()
+  @Expose()
+  deletedAt: Date;
 }

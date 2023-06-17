@@ -1,131 +1,54 @@
-import { HttpException, HttpStatus, Logger } from '@nestjs/common';
-import { PrismaService } from 'src/shared/prisma/prisma.service';
-import { UsersDto } from '../dto/getAll-user';
-import { UserDto } from '../dto/user.dto';
-import { FindOneUser } from '../interface';
-import { filterOptions } from 'src/shared/interface';
+import { BaseEntity } from 'src/shared/entities/BaseEntity.entity';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { RoleEntity } from './role.entity';
 
-export class UserEntity {
-  constructor(private prisma: PrismaService) {}
-  private readonly _logger = new Logger(UserEntity.name);
+@Entity({
+  name: 'tb_user',
+})
+export class UserEntity extends BaseEntity {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  @PrimaryGeneratedColumn('uuid', { length: 36 })
+  id: string;
 
-  /**
-   *
-   * @param { FindOneUser } user
-   * @returns UserEntity or null if user is not found
-   */
-  public async findOneUser(user: FindOneUser) {
-    try {
-      const data = await this.prisma.user.findFirst({
-        where: {
-          ...user,
-        },
-      });
+  @Column({
+    unique: true,
+    nullable: false,
+  })
+  userName: string;
 
-      return data;
-    } catch (error) {
-      // console.log(error);
-    }
-  }
+  @Column({
+    unique: true,
+    nullable: false,
+  })
+  email: string;
 
-  public async findAllUser(
-    user: UsersDto,
-    filterOptions: filterOptions = {
-      _skip: 10,
-      _take: 0,
-      _sort: {
-        createdAt: 'desc',
-      },
-    },
-  ) {
-    const users = await this.prisma.user.findMany({
-      where: {
-        AND: [user],
-      },
-      skip: +filterOptions._skip,
-      take: +filterOptions._take,
-      orderBy: filterOptions._sort,
-    });
-    const total = await this.prisma.user.count();
+  @Column()
+  password: string;
 
-    return {
-      users,
-      total,
-    };
-  }
+  @Column({
+    nullable: true,
+  })
+  address: string;
 
-  /**
-   *
-   * @param user UserDto
-   * @returns Promise<[UserEntity[], number]> or throw an error
-   *
-   * @description User with Unique ID, email and username. Not accepted duplicate data
-   */
-  public async saveUser(user: UserDto) {
-    const userExists = await this.prisma.user.findFirstOrThrow({
-      where: {
-        AND: [
-          {
-            username: user.username,
-          },
-          {
-            email: user.email,
-          },
-        ],
-      },
-    });
-    if (Number(userExists) !== 0) {
-      throw new HttpException(
-        `User with email ${user.email} or username ${user.username} already exists`,
-        HttpStatus.CONFLICT,
-      );
-    }
-    return await this.prisma.user.create({
-      data: {
-        ...user,
-      },
-    });
-  }
+  @Column({
+    unique: true,
+    nullable: true,
+  })
+  phone: string;
 
-  public async updateUser(user: UserDto) {
-    const getUser = await this.prisma.user.findFirstOrThrow({
-      where: {
-        id: user.id,
-      },
-    });
-    if (getUser)
-      throw new HttpException('User Not Found', HttpStatus.NOT_FOUND);
+  @Column()
+  firstName: string;
 
-    await this.prisma.user.update({
-      data: user,
-      where: {
-        id: getUser.id,
-      },
-    });
+  @Column()
+  lastName: string;
 
-    return getUser;
-  }
+  @ManyToOne(() => RoleEntity, (role) => role.users, {
+    nullable: false,
+  })
+  roleId: RoleEntity;
 
-  public async deleteUser(user: UsersDto) {
-    const getUser = await this.prisma.user.delete({
-      where: {
-        id: user.id,
-      },
-    });
-    if (!getUser)
-      throw new HttpException('User Not Found', HttpStatus.NOT_FOUND);
-
-    const userDelete = await this.prisma.user.delete({
-      where: {
-        id: getUser.id,
-      },
-    });
-
-    this._logger.warn('User Delete::', userDelete);
-
-    return {
-      deleted: true,
-      id: getUser.id,
-    };
+  constructor() {
+    super();
   }
 }

@@ -42,11 +42,11 @@ export class ProductsController extends BaseController {
     @Res() res: Response,
     @Query() products: ListProductDto,
   ) {
-    const [data, pagination] = await this.productsService.findAll(products);
-    this.customResponse(res, data, {
-      page: +products._skip,
-      total: pagination.total,
-    });
+    // const [data, pagination] = await this.productsService.findAll(products);
+    // this.customResponse(res, data, {
+    //   page: +products._skip,
+    //   total: pagination.total,
+    // });
   }
 
   @Get(':id')

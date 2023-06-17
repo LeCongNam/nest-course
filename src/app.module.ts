@@ -14,15 +14,30 @@ import { AppService } from './app.service';
 import { AuthModule } from './core/auth/auth.module';
 import { NotificationModule } from './core/auth/notification/notification.module';
 import { ProductsModule } from './core/products/products.module';
-import { InternalModule } from './core/rbmq/service-interal.module';
 import { SearchModule } from './core/search/search.module';
 import { UserModule } from './core/users/user.module';
-import { PrismaModule } from './shared/prisma/prisma.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
+    }),
+    TypeOrmModule.forRootAsync({
+      imports: [ConfigModule],
+      useFactory: (configService: ConfigService) => ({
+        type: 'mysql',
+        host: configService.get('DB_HOST'),
+        port: +configService.get('DB_PORT'),
+        username: configService.get('DB_USER'),
+        password: configService.get('DB_PASSWORD'),
+        database: configService.get('DB_NAME'),
+        // entities: [],
+        autoLoadEntities: true,
+        synchronize: true,
+        // logging: ['query', 'error', 'info'],
+      }),
+      inject: [ConfigService],
     }),
     ThrottlerModule.forRoot({
       ttl: 60,
@@ -109,9 +124,7 @@ import { PrismaModule } from './shared/prisma/prisma.module';
       ttl: 60,
       limit: 10,
     }),
-    InternalModule,
     SearchModule,
-    PrismaModule,
     UserModule,
     AuthModule,
     NotificationModule,

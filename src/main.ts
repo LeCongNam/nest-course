@@ -11,13 +11,13 @@ async function bootstrap() {
   app.use(helmet());
 
   const PORT = process.env.PORT || 3000;
-  await app.listen(PORT);
 
   app.use(compression());
 
-  // app.useGlobalFilters(new HttpExceptionFilter());
+  app.useGlobalFilters(new HttpExceptionFilter());
   app.useGlobalPipes(new ValidationPipe());
 
+  await app.listen(PORT);
   if (process.env.NODE_ENV === 'development') {
     console.log(`\x1b[32m Server start PORT: ${PORT}`);
   }
