@@ -8,6 +8,8 @@ import { UserDto } from 'src/core/users/dto/user.dto';
 import { EVENT_NAME } from 'src/event-emitter/constants';
 import { Provider } from '../search/constant';
 import { SearchService } from '../search/service/search.service';
+import { Role } from '../users/constant';
+import { UserEntity } from '../users/entity/user.entity';
 import { UserService } from '../users/user.service';
 import { LoginDto } from './dto/login.dto';
 
@@ -25,26 +27,29 @@ export class AuthService {
   public async registerAccount(user: UserDto) {
     const isUser = await this._userService.findOneUser({ email: user.email });
 
-    if (isUser !== null) {
+    if (isUser) {
       throw new HttpException('User is exist', HttpStatus.UNPROCESSABLE_ENTITY);
-    } else {
-      user.password = await this.hashPassword(user.password);
-      const userCreated = await this._userService.saveUser(user);
-
-      // Queue mail
-      const linkVerify =
-        (await this.configService.getOrThrow('DOMAIN')) +
-        `/user/verify-email?token=${
-          this.generateToken({ email: userCreated.email }, false).accessToken
-        }`;
-      this.eventEmitter.emit(EVENT_NAME.SEND_MAIL, {
-        emailReceiver: userCreated.email,
-        subject: userCreated.userName,
-        linkVerify,
-      });
-      this._logger.log('Register Account', userCreated.email);
-      return userCreated;
     }
+    user.password = await this.hashPassword(user.password);
+
+    const userCreated: UserEntity = await this._userService.saveUser({
+      ...user,
+      role: Role.MEMBER,
+    });
+
+    // Queue mail
+    const linkVerify =
+      (await this.configService.getOrThrow('DOMAIN')) +
+      `/user/verify-email?token=${
+        this.generateToken({ email: userCreated.email }, false).accessToken
+      }`;
+    this.eventEmitter.emit(EVENT_NAME.SEND_MAIL, {
+      emailReceiver: userCreated.email,
+      subject: userCreated.userName,
+      linkVerify,
+    });
+    this._logger.log('Register Account', userCreated.email);
+    return userCreated;
   }
 
   public generateToken(
@@ -84,10 +89,7 @@ export class AuthService {
     if (!user) {
       throw new HttpException('User is not exist', HttpStatus.NOT_FOUND);
     }
-    const token = this.generateToken(
-      { id: user.id, roleId: user.roleId },
-      true,
-    );
+    const token = this.generateToken({ id: user.id, roleId: user.role }, true);
     const isValidPassword = await compare(userDto.password, user.password);
     if (!isValidPassword) {
       throw new HttpException(

@@ -1,14 +1,11 @@
-import { Exclude, Expose, plainToInstance } from 'class-transformer';
+import { Expose, plainToInstance } from 'class-transformer';
 import {
   IsEmail,
-  IsEnum,
   IsNotEmpty,
   IsNumber,
   IsOptional,
   IsString,
 } from 'class-validator';
-import { RoleEntity } from '../entity/role.entity';
-import { Role } from '../constant';
 
 export class UserDto {
   @IsNumber()
@@ -52,11 +49,8 @@ export class UserDto {
   password: string;
 
   @IsNumber()
-  @IsEnum({
-    default: Role.MEMBER,
-  })
   @IsOptional()
-  roleId: RoleEntity;
+  role: number;
 
   @IsOptional()
   @Expose()

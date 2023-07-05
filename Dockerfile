@@ -1,12 +1,22 @@
-FROM node:hydrogen-alpine
-WORKDIR /app/
-COPY ["package.json", "package-lock.json*", "./"]
-ENV NODE_OPTIONS=--max_old_space_size=2048
-RUN export $(cat .env) && npm install --force
+# pull the Node.js Docker image
+FROM node:alpine
 
-RUN echo '#!/usr/bin/env sh' > start.sh && echo 'export $(cat .env) && npm run start ${@}' >> start.sh
-CMD ["sh", "./start.sh"]
+# create the directory inside the container
+WORKDIR /usr/src/app
+
+# copy the package.json files from local machine to the workdir in container
+COPY package*.json ./
+
+# run npm install in our local machine
+RUN npm install
+
+# copy the generated modules and all other files to the container
 COPY . .
+
 RUN npm run build
-EXPOSE 3001
-CMD ["npm", "run", "start:prod"]
+
+# our app is running on port 5000 within the container, so need to expose it
+EXPOSE 5000
+
+# the command that starts our app
+CMD ["node", "./dist/main.js"]

@@ -7,12 +7,12 @@
     "assets": [
       {
         "include": "templates/**/**",
-        "outDir": "dist"
+        "outDir": "dist/src"
       },
       {
         "include": "i18n/**/*",
         "watchAssets": true,
-        "outDir": "dist"
+        "outDir": "dist/src"
       }
     ]
   }

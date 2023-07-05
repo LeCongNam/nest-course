@@ -3,11 +3,11 @@ import { LoginDto } from 'src/core/auth/dto/login.dto';
 import { BaseRepository } from 'src/shared/repository/base.repository';
 import { DataSource } from 'typeorm';
 import { Role } from '../constant';
+import { AllUser } from '../dto/getAll-user';
+import { UpdateUser } from '../dto/update-user.dto';
 import { UserDto } from '../dto/user.dto';
 import { UserEntity } from '../entity/user.entity';
 import { FindOneUser } from '../interface';
-import { AllUser } from '../dto/getAll-user';
-import { UpdateUser } from '../dto/update-user.dto';
 
 @Injectable()
 export class UserRepository extends BaseRepository<UserEntity> {
@@ -45,7 +45,12 @@ export class UserRepository extends BaseRepository<UserEntity> {
   }
 
   public async createUser(user: UserDto) {
-    return this.save(Object.assign({}, user, { roleId: Role.MEMBER }));
+    return this.create({
+      ...user,
+      role: {
+        id: Role.MEMBER,
+      },
+    });
   }
 
   public async getAllUser(user: AllUser) {

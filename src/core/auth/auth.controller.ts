@@ -17,8 +17,8 @@ export class AuthController extends BaseController {
   @Post('/register')
   public async register(@Body() user: UserDto, @Res() res: Response) {
     const userCreated = await this.authService.registerAccount(user);
-    const newUser = UserDto.plainToClass(userCreated);
-    return this.customResponse(res, newUser);
+    // const newUser = UserDto.plainToClass(userCreated);
+    return this.customResponse(res, userCreated);
   }
 
   @IsPublic()
@@ -27,7 +27,7 @@ export class AuthController extends BaseController {
   public async login(@Body() userDto: LoginDto, @Res() res: Response) {
     const { data, token } = await this.authService.loginWithEmail(userDto);
     return this.customResponse(res, {
-      ...(data && UserDto.plainToClass(data)),
+      data,
       token,
     });
   }

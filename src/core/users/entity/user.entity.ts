@@ -1,5 +1,11 @@
 import { BaseEntity } from 'src/shared/entities/BaseEntity.entity';
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { RoleEntity } from './role.entity';
 
 @Entity({
@@ -45,8 +51,12 @@ export class UserEntity extends BaseEntity {
 
   @ManyToOne(() => RoleEntity, (role) => role.users, {
     nullable: false,
+    lazy: true,
   })
-  roleId: RoleEntity;
+  @JoinColumn({
+    name: 'roleId',
+  })
+  role: RoleEntity;
 
   constructor() {
     super();

@@ -7,6 +7,7 @@ import { BullModule } from '@nestjs/bull';
 import { EventEmitterModule } from '@nestjs/event-emitter';
 import { JwtModule } from '@nestjs/jwt';
 import { ThrottlerModule } from '@nestjs/throttler';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { AcceptLanguageResolver, I18nModule, QueryResolver } from 'nestjs-i18n';
 import { join } from 'path';
 import { AppController } from './app.controller';
@@ -16,7 +17,6 @@ import { NotificationModule } from './core/auth/notification/notification.module
 import { ProductsModule } from './core/products/products.module';
 import { SearchModule } from './core/search/search.module';
 import { UserModule } from './core/users/user.module';
-import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
   imports: [

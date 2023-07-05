@@ -1,11 +1,5 @@
 import { BaseEntity } from 'src/shared/entities/BaseEntity.entity';
-import {
-  Column,
-  Entity,
-  OneToMany,
-  PrimaryColumn,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+import { Column, Entity, JoinColumn, OneToMany, PrimaryColumn } from 'typeorm';
 import { UserEntity } from './user.entity';
 
 @Entity({
@@ -21,8 +15,11 @@ export class RoleEntity extends BaseEntity {
   })
   name: string;
 
-  @OneToMany(() => UserEntity, (user) => user.roleId, {
+  @OneToMany(() => UserEntity, (user) => user.role, {
     cascade: ['soft-remove'],
+  })
+  @JoinColumn({
+    name: 'users',
   })
   users: UserEntity[];
 

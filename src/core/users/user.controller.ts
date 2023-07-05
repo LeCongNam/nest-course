@@ -17,10 +17,10 @@ import { AuthGuard } from '../auth/guard/auth.guard';
 import { RoleGuard } from '../auth/guard/role.guard';
 import { Role } from './constant';
 import { Roles } from './decorator';
-import { UserDto } from './dto/user.dto';
-import { UserService } from './user.service';
 import { AllUser } from './dto/getAll-user';
 import { UpdateUser } from './dto/update-user.dto';
+import { UserDto } from './dto/user.dto';
+import { UserService } from './user.service';
 
 @Controller('users')
 export class UserController extends BaseController {
@@ -37,8 +37,8 @@ export class UserController extends BaseController {
   ) {
     const user = await this._useService.findOneUserById(id);
     if (user) {
-      const userTransForm = UserDto.plainToClass(user);
-      return this.customResponse(res, userTransForm);
+      // const userTransForm = UserDto.plainToClass(user);
+      return this.customResponse(res, user);
     }
     return this.customResponse(
       res,
