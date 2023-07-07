@@ -35,7 +35,7 @@ import { UserModule } from './core/users/user.module';
         // entities: [],
         autoLoadEntities: true,
         synchronize: true,
-        // logging: ['query', 'error', 'info'],
+        logging: ['query', 'error', 'info'],
       }),
       inject: [ConfigService],
     }),

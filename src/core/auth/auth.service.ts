@@ -26,7 +26,6 @@ export class AuthService {
 
   public async registerAccount(user: UserDto) {
     const isUser = await this._userService.findOneUser({ email: user.email });
-
     if (isUser) {
       throw new HttpException('User is exist', HttpStatus.UNPROCESSABLE_ENTITY);
     }
@@ -86,6 +85,7 @@ export class AuthService {
 
   public async loginWithEmail(userDto: LoginDto) {
     const user = await this._userService.login(userDto);
+
     if (!user) {
       throw new HttpException('User is not exist', HttpStatus.NOT_FOUND);
     }
@@ -101,5 +101,31 @@ export class AuthService {
       data: user,
       token,
     };
+  }
+
+  public async validateUser(email: string, password: string) {
+    const user = await this._userService.findOneUser({
+      email,
+    });
+
+    if (!user) {
+      throw new HttpException(
+        {
+          message: 'Password or User not correct',
+        },
+        HttpStatus.NOT_FOUND,
+      );
+    }
+
+    const isValid = await compare(password, user.password);
+    if (!isValid) {
+      throw new HttpException(
+        {
+          message: 'Password or User not correct',
+        },
+        HttpStatus.NOT_FOUND,
+      );
+    }
+    return user;
   }
 }
