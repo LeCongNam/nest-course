@@ -1,0 +1,2089 @@
+{
+    "Banteay Meanchey": {
+        "Mongkol Borei": [
+            "Banteay Neang",
+            "Bat Trang",
+            "Chamnaom",
+            "Kouk Ballangk",
+            "Koy Maeng",
+            "Ou Prasat",
+            "Phnum Touch",
+            "Rohat Tuek",
+            "Ruessei Kraok",
+            "Sambuor",
+            "Soea",
+            "Srah Reang",
+            "Ta Lam"
+        ],
+        "Phnum Srok": [
+            "Nam Tau",
+            "Paoy Char",
+            "Ponley",
+            "Spean Sraeng",
+            "Srah Chik",
+            "Phnum Dei"
+        ],
+        "Preah Netr Preah": [
+            "Chhnuor Mean Chey",
+            "Chob Veari",
+            "Phnum Lieb",
+            "Prasat",
+            "Preah Netr Preah",
+            "Rohal",
+            "Tean Kam",
+            "Tuek Chour",
+            "Bos Sbov"
+        ],
+        "Ou Chrov": [
+            "Changha",
+            "Koub",
+            "Kuttasat",
+            "Samraong",
+            "Souphi",
+            "Soeng",
+            "Ou Bei Choan"
+        ],
+        "Krong Serei Saophoan": [
+            "Kampong Svay",
+            "Kaoh Pong Satv",
+            "Mkak",
+            "Ou Ambel",
+            "Phniet",
+            "Preah Ponlea",
+            "Tuek Thla"
+        ],
+        "Thma Puok": [
+            "Banteay Chhmar",
+            "Kouk Romiet",
+            "Phum Thmei",
+            "Thma Puok",
+            "Kouk Kakthen",
+            "Kumru"
+        ],
+        "Svay Chek": [
+            "Phkoam",
+            "Sarongk",
+            "Sla Kram",
+            "Svay Chek",
+            "Ta Baen",
+            "Ta Phou",
+            "Treas",
+            "Roluos"
+        ],
+        "Malai": [
+            "Boeng Beng",
+            "Malai",
+            "Ou Sampor",
+            "Ou Sralau",
+            "Tuol Pongro",
+            "Ta Kong"
+        ],
+        "Krong Paoy Paet": [
+            "Nimitt",
+            "Paoy Paet"
+        ]
+    },
+    "Battambang": {
+        "Banan": [
+            "Kantueu Muoy",
+            "Kantueu Pir",
+            "Bay Damram",
+            "Chheu Teal",
+            "Chaeng Mean Chey",
+            "Phnum Sampov",
+            "Snoeng",
+            "Ta Kream"
+        ],
+        "Thma Koul": [
+            "Ta Pung",
+            "Ta Meun",
+            "Ou Ta Ki",
+            "Chrey",
+            "Anlong Run",
+            "Chrouy Sdau",
+            "Boeng Pring",
+            "Kouk Khmum",
+            "Bansay Traeng",
+            "Rung Chrey"
+        ],
+        "Krong Battambang": [
+            "Tuol Ta Aek",
+            "Preaek Preah Sdach",
+            "Rotanak",
+            "Chamkar Samraong",
+            "Sla Kaet",
+            "Kdol Doun Teav",
+            "Ou Mal",
+            "Voat Kor",
+            "Ou Char",
+            "Svay Pao"
+        ],
+        "Bavel": [
+            "Bavel",
+            "Khnach Romeas",
+            "Lvea",
+            "Prey Khpos",
+            "Ampil Pram Daeum",
+            "Kdol Ta Haen"
+        ],
+        "Aek Phnum": [
+            "Preaek Norint",
+            "Samraong Knong",
+            "Preaek Khpob",
+            "Preaek Luong",
+            "Peam Aek",
+            "Prey Chas",
+            "Kaoh Chiveang"
+        ],
+        "Moung Ruessei": [
+            "Moung",
+            "Kear",
+            "Prey Svay",
+            "Ruessei Krang",
+            "Chrey",
+            "Ta Loas",
+            "Kakaoh",
+            "Prey Touch",
+            "Robas Mongkol"
+        ],
+        "Rotonak Mondol": [
+            "Sdau",
+            "Andaeuk Haeb",
+            "Phlov Meas",
+            "Traeng"
+        ],
+        "Sangkae": [
+            "Anlong Vil",
+            "Norea",
+            "Ta Pon",
+            "Roka",
+            "Kampong Preah",
+            "Kampong Pring",
+            "Reang Kesei",
+            "Ou Dambang Muoy",
+            "Ou Dambang Pir",
+            "Voat Ta Muem"
+        ],
+        "Samlout": [
+            "Ta Taok",
+            "Kampong Lpov",
+            "Ou Samrel",
+            "Sung",
+            "Samlout",
+            "Mean Chey",
+            "Ta Sanh"
+        ],
+        "Sampov Lun": [
+            "Sampov Lun",
+            "Angkor Ban",
+            "Ta Sda",
+            "Santepheap",
+            "Serei Mean Chey",
+            "Chrey Seima"
+        ],
+        "Phnom Proek": [
+            "Phnom Proek",
+            "Pech Chenda",
+            "Chak Krey",
+            "Barang Thleak",
+            "Ou Rumduol"
+        ],
+        "Kamrieng": [
+            "Kamrieng",
+            "Boeng Reang",
+            "Ou Da",
+            "Trang",
+            "Ta Saen",
+            "Ta Krei"
+        ],
+        "Koas Krala": [
+            "Thipakdei",
+            "Koas Krala",
+            "Hab",
+            "Preah Phos",
+            "Doun Ba",
+            "Chhnal Mean"
+        ],
+        "Rukhak Kiri": [
+            "Preaek Chik",
+            "Prey Tralach"
+        ]
+    },
+    "Kampong Cham": {
+        "Batheay": [
+            "Batheay",
+            "Chbar Ampov",
+            "Chealea",
+            "Cheung Prey",
+            "Me Pring",
+            "Ph'av",
+            "Sambour",
+            "Sandaek",
+            "Tang Krang",
+            "Tang Krasang",
+            "Trab",
+            "Tumnob"
+        ],
+        "Chamkar Leu": [
+            "Bos Khnaor",
+            "Chamkar Andoung",
+            "Cheyyou",
+            "Lvea Leu",
+            "Spueu",
+            "Svay Teab",
+            "Ta Ong",
+            "Ta Prok"
+        ],
+        "Cheung Prey": [
+            "Khnaor Dambang",
+            "Kouk Rovieng",
+            "Phdau Chum",
+            "Prey Char",
+            "Pring Chrum",
+            "Sampong Chey",
+            "Sdaeung Chey",
+            "Soutip",
+            "Srama",
+            "Trapeang Kor"
+        ],
+        "Krong Kampong Cham": [
+            "Boeng Kok",
+            "Kampong Cham",
+            "Sambuor Meas",
+            "Veal Vong"
+        ],
+        "Kampong Siem": [
+            "Ampil",
+            "Han Chey",
+            "Kien Chrey",
+            "Kokor",
+            "Kaoh Mitt",
+            "Kaoh Roka",
+            "Kaoh Samraong",
+            "Kaoh Tontuem",
+            "Krala",
+            "Ou Svay",
+            "Ro'ang",
+            "Rumchek",
+            "Srak",
+            "Trean",
+            "Vihear Thum"
+        ],
+        "Kang Meas": [
+            "Angkor Ban",
+            "Kang Ta Noeng",
+            "Khchau",
+            "Peam Chi Kang",
+            "Preaek Koy",
+            "Preaek Krabau",
+            "Reay Pay",
+            "Roka Ar",
+            "Roka Koy",
+            "Sdau",
+            "Sour Kong"
+        ],
+        "Kaoh Soutin": [
+            "Kampong Reab",
+            "Kaoh Soutin",
+            "Lve",
+            "Moha Leaph",
+            "Moha Khnhoung",
+            "Peam Prathnuoh",
+            "Pongro",
+            "Preaek Ta Nong"
+        ],
+        "Prey Chhor": [
+            "Baray",
+            "Boeng Nay",
+            "Chrey Vien",
+            "Khvet Thum",
+            "Kor",
+            "Krouch",
+            "Lvea",
+            "Mien",
+            "Prey Chhor",
+            "Sour Saen",
+            "Samraong",
+            "Srangae",
+            "Thma Pun",
+            "Tong Rong",
+            "Trapeang Preah"
+        ],
+        "Srei Santhor": [
+            "Baray",
+            "Chi Bal",
+            "Khnar Sa",
+            "Kaoh Andaet",
+            "Mean Chey",
+            "Pteah Kandal",
+            "Pram Yam",
+            "Preaek Dambouk",
+            "Preaek Pou",
+            "Preaek Rumdeng",
+            "Ruessei Srok",
+            "Svay Pou",
+            "Svay Sach Phnum",
+            "Tong Tralach"
+        ],
+        "Stueng Trang": [
+            "Areaks Tnaot",
+            "Dang Kdar",
+            "Khpob Ta Nguon",
+            "Me Sar Chrey",
+            "Ou Mlu",
+            "Peam Kaoh Sna",
+            "Preah Andoung",
+            "Preaek Bak",
+            "Preaek Kak",
+            "Soupheas",
+            "Tuol Preah Khleang",
+            "Tuol Sambuor"
+        ]
+    },
+    "Kampong Chhnang": {
+        "Baribour": [
+            "Anhchanh Rung",
+            "Chhnok Tru",
+            "Chak",
+            "Khon Rang",
+            "Kampong Preah Kokir",
+            "Melum",
+            "Phsar",
+            "Pech Changvar",
+            "Popel",
+            "Ponley",
+            "Trapeang Chan"
+        ],
+        "Chol Kiri": [
+            "Chol Sar",
+            "Kaoh Thkov",
+            "Kampong Os",
+            "Peam Chhkaok",
+            "Prey Kri"
+        ],
+        "Krong Kampong Chhnang": [
+            "Phsar Chhnang",
+            "Kampong Chhnang",
+            "Ph'er",
+            "Khsam"
+        ],
+        "Kampong Leaeng": [
+            "Chranouk",
+            "Dar",
+            "Kampong Hau",
+            "Phlov Tuk",
+            "Pou",
+            "Pralay Meas",
+            "Samraong Saen",
+            "Svay Rumpea",
+            "Trangel"
+        ],
+        "Kampong Tralach": [
+            "Ampil Tuek",
+            "Chhuk Sa",
+            "Chres",
+            "Kampong Tralach",
+            "Longveaek",
+            "Ou Ruessei",
+            "Peani",
+            "Saeb",
+            "Ta Ches",
+            "Thma Edth"
+        ],
+        "Rolea B'ier": [
+            "Andoung Snay",
+            "Banteay Preal",
+            "Cheung Kreav",
+            "Chrey Bak",
+            "Kouk Banteay",
+            "Krang Leav",
+            "Pongro",
+            "Prasneb",
+            "Prey Mul",
+            "Rolea B'ier",
+            "Srae Thmei",
+            "Svay Chrum",
+            "Tuek Hout"
+        ],
+        "Sameakki Mean Chey": [
+            "Chhean Laeung",
+            "Khnar Chhmar",
+            "Krang Lvea",
+            "Peam",
+            "Sedthei",
+            "Svay",
+            "Svay Chuk",
+            "Tbaeng Khpos",
+            "Thlok Vien"
+        ],
+        "Tuek Phos": [
+            "Akphivoadth",
+            "Chieb",
+            "Chaong Maong",
+            "Kbal Tuek",
+            "Khlong Popok",
+            "Krang Skear",
+            "Tang Krasang",
+            "Tuol Khpos"
+        ]
+    },
+    "Kampong Speu": {
+        "Basedth": [
+            "Basedth",
+            "Kat Phluk",
+            "Nitean",
+            "Pheakdei",
+            "Pheari Mean Chey",
+            "Phong",
+            "Pou Angkrang",
+            "Pou Chamraeun",
+            "Pou Mreal",
+            "Svay Chacheb",
+            "Tuol Ampil",
+            "Tuol Sala",
+            "Kak",
+            "Svay Rumpea",
+            "Preah Khae"
+        ],
+        "Krong Chbar Mon": [
+            "Chbar Mon",
+            "Kandaol Dom",
+            "Roka Thum",
+            "Sopoar Tep",
+            "Svay Kravan"
+        ],
+        "Kong Pisei": [
+            "Angk Popel",
+            "Chongruk",
+            "Moha Ruessei",
+            "Pechr Muni",
+            "Preah Nipean",
+            "Prey Nheat",
+            "Prey Vihear",
+            "Roka Kaoh",
+            "Sdok",
+            "Snam Krapeu",
+            "Srang",
+            "Tuek L'ak",
+            "Veal"
+        ],
+        "Aoral": [
+            "Haong Samnam",
+            "Reaksmei Sameakki",
+            "Trapeang Chour",
+            "Sangkae Satob",
+            "Ta Sal"
+        ],
+        "Samkkei Munichay": [
+            "Chant Saen",
+            "Cheung Roas",
+            "Chumpu Proeks",
+            "Krang Chek",
+            "Mean Chey",
+            "Prey Krasang",
+            "Yutth Sameakki",
+            "Damnak Reang",
+            "Peang Lvea",
+            "Phnum Touch"
+        ],
+        "Krong Odongk Maechay": [
+            "Khsem Khsan",
+            "Preah Srae",
+            "Trach Tong",
+            "Veal Pung",
+            "Veang Chas"
+        ],
+        "Phnum Sruoch": [
+            "Chambak",
+            "Choam Sangkae",
+            "Dambouk Rung",
+            "Kiri Voan",
+            "Krang Dei Vay",
+            "Moha Sang",
+            "Ou",
+            "Prey Rumduol",
+            "Prey Kmeng",
+            "Tang Samraong",
+            "Tang Sya",
+            "Traeng Trayueng"
+        ],
+        "Samraong Tong": [
+            "Roleang Chak",
+            "Kahaeng",
+            "Khtum Krang",
+            "Krang Ampil",
+            "Pneay",
+            "Roleang Kreul",
+            "Samraong Tong",
+            "Sambour",
+            "Saen Dei",
+            "Skuh",
+            "Tang Krouch",
+            "Thommoda Ar",
+            "Trapeang Kong",
+            "Tumpoar Meas",
+            "Voa Sa"
+        ],
+        "Thpong": [
+            "Amleang",
+            "Monourom",
+            "Prambei Mum",
+            "Rung Roeang",
+            "Toap Mean",
+            "Veal Pon",
+            "Yea Angk"
+        ]
+    },
+    "Kampong Thom": {
+        "Baray": [
+            "Bak Sna",
+            "Ballangk",
+            "Baray",
+            "Boeng",
+            "Chaeung Daeung",
+            "Chraneang",
+            "Chhuk Khsach",
+            "Chong Doung",
+            "Chrolong",
+            "Kokir Thum",
+            "Krava",
+            "Andoung Pou",
+            "Pongro",
+            "Sou Young",
+            "Sralau",
+            "Svay Phleung",
+            "Tnaot Chum",
+            "Treal"
+        ],
+        "Kampong Svay": [
+            "Chey",
+            "Damrei Slab",
+            "Kampong Kou",
+            "Kampong Svay",
+            "Ni Pechr",
+            "Phat Sanday",
+            "San Kor",
+            "Tbaeng",
+            "Trapeang Ruessei",
+            "Kdei Doung",
+            "Prey Kuy"
+        ],
+        "Krong Stueng Saen": [
+            "Damrei Choan Khla",
+            "Kampong Thum",
+            "Kampong Roteh",
+            "Ou Kanthor",
+            "Kampong Krabau",
+            "Prey Ta Hu",
+            "Achar Leak",
+            "Srayov"
+        ],
+        "Prasat Ballangk": [
+            "Doung",
+            "Kraya",
+            "Phan Nheum",
+            "Sa Kream",
+            "Sala Visai",
+            "Sameakki",
+            "Tuol Kreul"
+        ],
+        "Prasat Sambour": [
+            "Chhuk",
+            "Koul",
+            "Sambour",
+            "Sraeung",
+            "Tang Krasau"
+        ],
+        "Sandan": [
+            "Chheu Teal",
+            "Dang Kambet",
+            "Klaeng",
+            "Mean Ritth",
+            "Mean Chey",
+            "Ngan",
+            "Sandan",
+            "Sochet",
+            "Tum Ring"
+        ],
+        "Santuk": [
+            "Boeng Lvea",
+            "Chroab",
+            "Kampong Thma",
+            "Kakaoh",
+            "Kraya",
+            "Pnov",
+            "Prasat",
+            "Tang Krasang",
+            "Ti Pou",
+            "Tboung Krapeu"
+        ],
+        "Stoung": [
+            "Banteay Stoung",
+            "Chamnar Kraom",
+            "Chamnar Leu",
+            "Kampong Chen Cheung",
+            "Kampong Chen Tboung",
+            "Msar Krang",
+            "Peam Bang",
+            "Popok",
+            "Pralay",
+            "Preah Damrei",
+            "Rung Roeang",
+            "Samprouch",
+            "Trea"
+        ]
+    },
+    "Kampot": {
+        "Angkor Chey": [
+            "Angk Phnum Touch",
+            "Angkor Chey",
+            "Champei",
+            "Dambouk Khpos",
+            "Dan Koum",
+            "Daeum Doung",
+            "Mroum",
+            "Phnum Kong",
+            "Praphnum",
+            "Samlanh",
+            "Tani"
+        ],
+        "Banteay Meas": [
+            "Banteay Meas Khang Kaeut",
+            "Banteay Meas Khang Lech",
+            "Prey Tonle",
+            "Samraong Kraom",
+            "Samraong Leu",
+            "Sdach Kong Khang Cheung",
+            "Sdach Kong Khang Lech",
+            "Sdach Kong Khang Tboung",
+            "Tnaot Chong Srang",
+            "Trapeang Sala Khang Kaeut",
+            "Trapeang Sala Khang Lech",
+            "Tuk Meas Khang Kaeut",
+            "Tuk Meas Khang Lech",
+            "Voat Angk Khang Cheung",
+            "Voat Angk Khang Tboung"
+        ],
+        "Chhuk": [
+            "Baniev",
+            "Ta Kaen",
+            "Boeng Nimol",
+            "Chhuk",
+            "Doun Yay",
+            "Krang Sbov",
+            "Krang Snay",
+            "Lbaeuk",
+            "Trapeang Plang",
+            "Mean Chey",
+            "Nareay",
+            "Satv Pong",
+            "Trapeang Bei",
+            "Tramaeng"
+        ],
+        "Chum Kiri": [
+            "Chres",
+            "Chumpu Voan",
+            "Snay Anhchet",
+            "Srae Chaeng",
+            "Srae Knong",
+            "Srae Samraong",
+            "Trapeang Reang"
+        ],
+        "Dang Tong": [
+            "Damnak Sokram",
+            "Dang Tong",
+            "Khcheay Khang Cheung",
+            "Khcheay Khang Tboung",
+            "Mean Ritth",
+            "Srae Chea Khang Cheung",
+            "Srae Chea Khang Tboung",
+            "Totung",
+            "Angk Romeas",
+            "L'ang"
+        ],
+        "Kampong Trach": [
+            "Boeng Sala Khang Cheung",
+            "Boeng Sala Khang Tboung",
+            "Damnak Kantuot Khang Cheung",
+            "Damnak Kantuot Khang Tboung",
+            "Kampong Trach Khang Kaeut",
+            "Kampong Trach Khang Lech",
+            "Kanthaor Khang Cheung",
+            "Kanthaor Khang kaeut",
+            "Kanthaor Khang Lech",
+            "Preaek Kroes",
+            "Ruessei Srok Khang Kaeut",
+            "Ruessei Srok Khang Lech",
+            "Svay Tong Khang Cheung",
+            "Svay Tong Khang Tboung"
+        ],
+        "Tuek Chhou": [
+            "Boeng Tuk",
+            "Chum Kriel",
+            "Kampong Kraeng",
+            "Kampong Samraong",
+            "Kandal",
+            "Kaoh Touch",
+            "Koun Satv",
+            "Meakprang",
+            "Preaek Tnaot",
+            "Prey Khmum",
+            "Prey Thnang",
+            "Stueng Kaev",
+            "Thmei",
+            "Trapeang Pring",
+            "Trapeang Sangkae",
+            "Trapeang Thum"
+        ],
+        "Krong Kampot": [
+            "Kampong Kandal",
+            "Krang Ampil",
+            "Kampong Bay",
+            "Andoung Khmaer",
+            "Traeuy Kaoh"
+        ]
+    },
+    "Kandal": {
+        "Kandal Stueng": [
+            "Ampov Prey",
+            "Anlong Romiet",
+            "Barku",
+            "Boeng Khyang",
+            "Cheung Kaeub",
+            "Daeum Rues",
+            "Kandaok",
+            "Thmei",
+            "Kouk Trab",
+            "Preah Putth",
+            "Preaek Roka",
+            "Preaek Slaeng",
+            "Roka",
+            "Roleang Kaen",
+            "Siem Reab",
+            "Tbaeng",
+            "Trapeang Veaeng",
+            "Trea"
+        ],
+        "Kien Svay": [
+            "Banteay Daek",
+            "Chheu Teal",
+            "Dei Edth",
+            "Kampong Svay",
+            "Kokir",
+            "Kokir Thum",
+            "Phum Thum",
+            "Samraong Thum"
+        ],
+        "Krong Akreiy Ksatr": [
+            "Bak Dav",
+            "Kaoh Oknha Tei",
+            "Preaek Ampil",
+            "Preaek Luong",
+            "Preaek Ta Kov",
+            "Svay Chrum",
+            "Akreiy Ksatr",
+            "Barong",
+            "Peam Oknha Ong",
+            "Preaek Kmeng",
+            "Sarikakaev"
+        ],
+        "Khsach Kandal": [
+            "Chey Thum",
+            "Kampong Chamlang",
+            "Kaoh Chouram",
+            "Preah Prasab",
+            "Preaek Ta Meak",
+            "Puk Ruessei",
+            "Roka Chonlueng",
+            "Sanlung",
+            "Sithor",
+            "Svay Romiet",
+            "Ta Aek",
+            "Vihear Suork"
+        ],
+        "Krong Sampeou Poun": [
+            "Chheu Khmau",
+            "Chrouy Ta Kaev",
+            "Preaek Chrey",
+            "Preaek Sdei",
+            "Sampeou Poun"
+        ],
+        "Kaoh Thum": [
+            "Kampong Kong",
+            "Kaoh Thum Ka",
+            "Kaoh Thum Kha",
+            "Leuk Daek",
+            "Pouthi Ban",
+            "Preaek Thmei"
+        ],
+        "Leuk Daek": [
+            "Kampong Phnum",
+            "K'am Samnar",
+            "Khpob ateav",
+            "Peam Reang",
+            "Preaek Dach",
+            "Preaek Tonloab",
+            "Sandar"
+        ],
+        "Lvea Aem": [
+            "Boeng Krum",
+            "Kaoh Kaev",
+            "Kaoh Reah",
+            "Lvea Sa",
+            "Phum Thum",
+            "Preaek Rey",
+            "Preaek Ruessei",
+            "Sambuor",
+            "Thma Kor",
+            "Tuek Khleang"
+        ],
+        "Mukh Kampul": [
+            "Preaek Anhchanh",
+            "Preaek Dambang",
+            "Roka Kaong Muoy",
+            "Roka Kaong Pir",
+            "Ruessei Chrouy",
+            "Sambuor Meas",
+            "Svay Ampear"
+        ],
+        "Angk Snuol": [
+            "Baek Chan",
+            "Chhak Chheu Neang",
+            "Damnak Ampil",
+            "Krang Mkak",
+            "Lumhach",
+            "Mkak",
+            "Peuk",
+            "Prey Puoch",
+            "Samraong Leu",
+            "Tuol Prech"
+        ],
+        "Popnhea Lueu": [
+            "Chhveang",
+            "Chrey Loas",
+            "Kampong Luong",
+            "Kampong Os",
+            "Kaoh Chen",
+            "Phnum Bat",
+            "Ponhea Lueu",
+            "Preaek Ta Teaen",
+            "Phsar Daek",
+            "Tumnob Thum",
+            "Vihear Luong"
+        ],
+        "S'ang": [
+            "Khpob",
+            "Kaoh Anlong Chen",
+            "Kaoh Khael",
+            "Kaoh Khsach Tonlea",
+            "Krang Yov",
+            "Prasat",
+            "Preaek Ambel",
+            "Preaek Koy",
+            "Roka Khpos",
+            "S'ang Phnum",
+            "Setbou",
+            "Svay Prateal",
+            "Svay Rolum",
+            "Ta Lon",
+            "Traeuy Sla",
+            "Tuek Vil"
+        ],
+        "Krong Ta Khmau": [
+            "Ta Kdol",
+            "Preaek Ruessei",
+            "Daeum Mien",
+            "Ta Khmau",
+            "Preaek Hour",
+            "Kampong Samnanh"
+        ]
+    },
+    "Koh Kong": {
+        "Botum Sakor": [
+            "Andoung Tuek",
+            "Kandaol",
+            "Ta Nuon",
+            "Thma Sa"
+        ],
+        "Kiri Sakor": [
+            "Kaoh Sdach",
+            "Phnhi Meas",
+            "Preaek Khsach"
+        ],
+        "Koh Kong": [
+            "Chrouy Pras",
+            "Kaoh Kapi",
+            "Ta Tai Kraom",
+            "Trapeang Rung"
+        ],
+        "Krong Khemarak Phoumin": [
+            "Smach Mean Chey",
+            "Dang Tong",
+            "Stueng Veaeng"
+        ],
+        "Mondol Seima": [
+            "Bak Khlang",
+            "Peam Krasaob",
+            "Tuol Kokir"
+        ],
+        "Srae Ambel": [
+            "Boeng Preav",
+            "Chi Kha Kraom",
+            "Chi Kha Leu",
+            "Chrouy Svay",
+            "Dang Peaeng",
+            "Srae Ambel"
+        ],
+        "Thma Bang": [
+            "Ta Tey Leu",
+            "Pralay",
+            "Chumnoab",
+            "Ruessei Chrum",
+            "Chi Phat",
+            "Thma Doun Pov"
+        ]
+    },
+    "Kratie": {
+        "Chhloung": [
+            "Chhloung",
+            "Damrei Phong",
+            "Han Chey",
+            "Kampong Damrei",
+            "Kanhchor",
+            "Khsach Andaet",
+            "Pongro",
+            "Preaek Saman"
+        ],
+        "Krong Kracheh": [
+            "Kaoh Trong",
+            "Krakor",
+            "Kracheh",
+            "Ou Ruessei",
+            "Roka Kandal"
+        ],
+        "Preaek Prasab": [
+            "Chambak",
+            "Chrouy Banteay",
+            "Kampong Kor",
+            "Kaoh Ta Suy",
+            "Preaek Prasab",
+            "Ruessei Kaev",
+            "Saob",
+            "Ta Mau"
+        ],
+        "Sambour": [
+            "Boeng Char",
+            "Kampong Cham",
+            "Kaoh Khnhaer",
+            "Sambour",
+            "Sandan",
+            "Voadthonak"
+        ],
+        "Ou Krieng Sen Chey": [
+            "Kbal Damrei",
+            "Ou Krieng",
+            "Roluos Mean Chey",
+            "Srae Chis",
+            "Ou Kandear Sen Chey"
+        ],
+        "Snuol": [
+            "Khsuem",
+            "Pir Thnu",
+            "Snuol",
+            "Srae Char",
+            "Svay Chreah"
+        ],
+        "Chitr Borie": [
+            "Bos Leav",
+            "Changkrang",
+            "Dar",
+            "Kantuot",
+            "Kou Loab",
+            "Kaoh Chraeng",
+            "Sambok",
+            "Thma Andaeuk",
+            "Thma Kreae",
+            "Thmei"
+        ]
+    },
+    "Mondulkiri": {
+        "Kaev Seima": [
+            "Chong Phlah",
+            "Me Mang",
+            "Srae Chhuk",
+            "Srae Khtum",
+            "Srae Preah"
+        ],
+        "Kaoh Nheaek": [
+            "Nang Khi Loek",
+            "Ou Buon Leu",
+            "Roya",
+            "Sokh Sant",
+            "Srae Huy",
+            "Srae Sangkom"
+        ],
+        "Ou Reang": [
+            "Dak Dam",
+            "Saen Monourom"
+        ],
+        "Pech Chreada": [
+            "Krang Teh",
+            "Bu Chri",
+            "Srae Ampum",
+            "Bu Sra"
+        ],
+        "Krong Saen Monourom": [
+            "Monourom",
+            "Sokh Dom",
+            "Spean Mean Chey",
+            "Romonea"
+        ]
+    },
+    "Phnom Penh": {
+        "Chamkar Mon": [
+            "Tonle Basak",
+            "Tuol Tumpung Pir",
+            "Tuol Tumpung Muoy",
+            "Boeng Trabaek",
+            "Phsar Daeum Thkov"
+        ],
+        "Boeng Keng Kang": [
+            "Boeng Keng Kang Muoy",
+            "Boeng Keng Kang Pir",
+            "Boeng Keng Kang Bei",
+            "Olympic",
+            "Tuol Svay Prey Muoy",
+            "Tuol Svay Prey Pir",
+            "Tumnob Tuek"
+        ],
+        "Doun Penh": [
+            "Phsar Thmei Muoy",
+            "Phsar Thmei Pir",
+            "Phsar Thmei Bei",
+            "Boeng Reang",
+            "Phsar Kandal Muoy",
+            "Phsar Kandal Pir",
+            "Chakto Mukh",
+            "Chey Chumneah",
+            "Phsar Chas",
+            "Srah Chak",
+            "Voat Phnum"
+        ],
+        "Prampir Meakkakra": [
+            "Ou Ruessei Muoy",
+            "Ou Ruessei Pir",
+            "Ou Ruessei Bei",
+            "Ou Ruessei Buon",
+            "Monourom",
+            "Mittakpheap",
+            "Veal Vong",
+            "Boeng Prolit"
+        ],
+        "Tuol Kouk": [
+            "Phsar Depou Muoy",
+            "Phsar Depou Pir",
+            "Phsar Depou Bei",
+            "Tuek L'ak Muoy",
+            "Tuek L'ak Pir",
+            "Tuek L'ak Bei",
+            "Boeng Kak Muoy",
+            "Boeng Kak Pir",
+            "Phsar Daeum Kor",
+            "Boeng Salang"
+        ],
+        "Dangkao": [
+            "Dangkao",
+            "Pong Tuek",
+            "Prey Veaeng",
+            "Prey Sa",
+            "Krang Pongro",
+            "Sak Sampov",
+            "Cheung Aek",
+            "Kong Noy",
+            "Preaek Kampis",
+            "Roluos",
+            "Spean Thma",
+            "Tien"
+        ],
+        "Kamboul": [
+            "Prateah Lang",
+            "Phleung Chheh Roteh",
+            "Boeng Thum",
+            "Kamboul",
+            "Kantaok",
+            "Ovlaok",
+            "Snao"
+        ],
+        "Mean Chey": [
+            "Stueng Mean chey 1",
+            "Boeng Tumpun 1",
+            "Chak Angrae Leu",
+            "Chak Angrae Kraom",
+            "Boeng Tumpun 2",
+            "Stueng Mean chey 2",
+            "Stueng Mean chey 3"
+        ],
+        "Ruessei Kaev": [
+            "Tuol Sangkae 1",
+            "Svay Pak",
+            "Kiloumaetr Lekh Prammuoy",
+            "Ruessei Kaev",
+            "Chrang Chamreh Muoy",
+            "Chrang Chamreh Pir",
+            "Tuol Sangkae 2"
+        ],
+        "Saensokh": [
+            "Krang Thnong",
+            "Phnom Penh Thmei",
+            "Tuek Thla",
+            "Khmuonh",
+            "Ou Baek K'am",
+            "Kouk Khleang"
+        ],
+        "Por Senchey": [
+            "Trapeang Krasang",
+            "Chaom Chau 1",
+            "Kakab 1",
+            "Samraong Kraom",
+            "Chaom Chau 2",
+            "Chaom Chau 3",
+            "Kakab 2"
+        ],
+        "Chrouy Changva": [
+            "Chrouy Changva",
+            "Preaek Lieb",
+            "Preaek Ta Sek",
+            "Kaoh Dach",
+            "Bak Khaeng"
+        ],
+        "Preaek Pnov": [
+            "Preaek Pnov",
+            "Ponhea Pon",
+            "Samraong",
+            "Kouk Roka",
+            "Ponsang"
+        ],
+        "Chbar Ampov": [
+            "Chbar Ampov Muoy",
+            "Chbar Ampov Pir",
+            "Nirouth",
+            "Preaek Pra",
+            "Veal Sbov",
+            "Preaek Aeng",
+            "Kbal Kaoh",
+            "Preaek Thmei"
+        ]
+    },
+    "Preah Vihear": {
+        "Chey Saen": [
+            "S'ang",
+            "Tasu",
+            "Khyang",
+            "Chrach",
+            "Thmea",
+            "Putrea"
+        ],
+        "Chhaeb": [
+            "Chhaeb Muoy",
+            "Chhaeb Pir",
+            "Sangkae Muoy",
+            "Sangkae Pir",
+            "Mlu Prey Muoy",
+            "Mlu Prey Pir",
+            "Kampong Sralau Muoy",
+            "Kampong Sralau Pir"
+        ],
+        "Choam Khsant": [
+            "Choam Khsant",
+            "Tuek Kraham",
+            "Pring Thum",
+            "Rumdaoh Srae",
+            "Yeang",
+            "Kantuot"
+        ],
+        "Kuleaen": [
+            "Kuleaen Tboung",
+            "Kuleaen Cheung",
+            "Thmei",
+            "Phnum Penh",
+            "Phnum Tbaeng Pir",
+            "Srayang"
+        ],
+        "Rovieng": [
+            "Robieb",
+            "Reaksmei",
+            "Rohas",
+            "Rung Roeang",
+            "Rik Reay",
+            "Ruos Rean",
+            "Rotanak",
+            "Rieb Roy",
+            "Raksa",
+            "Rumdaoh",
+            "Romtom",
+            "Romoniy"
+        ],
+        "Sangkum Thmei": [
+            "Chamraeun",
+            "Ro'ang",
+            "Phnum Tbaeng Muoy",
+            "Sdau",
+            "Ronak Ser"
+        ],
+        "Tbaeng Mean Chey": [
+            "Chhean Mukh",
+            "Pou",
+            "Prame",
+            "Preah Khleang"
+        ],
+        "Krong Preah Vihear": [
+            "Kampong Pranak",
+            "Pal Hal"
+        ]
+    },
+    "Prey Veng": {
+        "Ba Phnum": [
+            "Boeng Preah",
+            "Cheung Phnum",
+            "Chheu Kach",
+            "Reaks Chey",
+            "Roung Damrei",
+            "Sdau Kaong",
+            "Spueu Ka",
+            "Spueu Kha",
+            "Theay"
+        ],
+        "Kamchay Mear": [
+            "Cheach",
+            "Doun Koeng",
+            "Kranhung",
+            "Krabau",
+            "Seang Khveang",
+            "Smaong Khang Cheung",
+            "Smaong Khang Tboung",
+            "Trabaek"
+        ],
+        "Kampong Trabaek": [
+            "Ansaong",
+            "Cham",
+            "Cheang Daek",
+            "Chrey",
+            "Kansoam Ak",
+            "Kou Khchak",
+            "Kampong Trabaek",
+            "Peam Montear",
+            "Prasat",
+            "Pratheat",
+            "Prey Chhor",
+            "Prey Poun",
+            "Thkov"
+        ],
+        "Kanhchriech": [
+            "Chong Ampil",
+            "Kanhchriech",
+            "Kdoeang Reay",
+            "Kouk Kong Kaeut",
+            "Kouk Kong Lech",
+            "Preal",
+            "Thma Pun",
+            "Tnaot"
+        ],
+        "Me Sang": [
+            "Angkor Sar",
+            "Chres",
+            "Chi Phok",
+            "Prey Khnes",
+            "Prey Rumdeng",
+            "Prey Totueng",
+            "Svay Chrum",
+            "Trapeang Srae"
+        ],
+        "Peam Chor": [
+            "Angkor Angk",
+            "Kampong Prasat",
+            "Kaoh Chek",
+            "Kaoh Roka",
+            "Kaoh Sampov",
+            "Krang Ta Yang",
+            "Preaek Krabau",
+            "Preaek Sambuor",
+            "Ruessei Srok",
+            "Svay Phluoh"
+        ],
+        "Peam Ro": [
+            "Ba Baong",
+            "Banlich Prasat",
+            "Neak Loeang",
+            "Peam Mean Chey",
+            "Peam Ro",
+            "Preaek Khsay Ka",
+            "Preaek Khsay Kha",
+            "Prey Kandieng"
+        ],
+        "Pea Reang": [
+            "Kampong Popil",
+            "Kanhcham",
+            "Kampong Prang",
+            "Kampong Ruessei",
+            "Mesa Prachan",
+            "Preaek Ta Sar",
+            "Prey Pnov",
+            "Prey Sniet",
+            "Prey Sralet",
+            "Reab",
+            "Roka"
+        ],
+        "Preah Sdach": [
+            "Angkor Reach",
+            "Banteay Chakrei",
+            "Boeng Daol",
+            "Chey Kampok",
+            "Kampong Soeng",
+            "Krang Svay",
+            "Lvea",
+            "Preah Sdach",
+            "Reathor",
+            "Rumchek",
+            "Sena Reach Otdam"
+        ],
+        "Krong Prey Veng": [
+            "Baray",
+            "Cheung Tuek",
+            "Kampong Leav"
+        ],
+        "Kampong Leav": [
+            "Pou Rieng",
+            "Preaek Anteah",
+            "Preaek Chrey",
+            "Prey Kanlaong",
+            "Ta Kao"
+        ],
+        "Sithor Kandal": [
+            "Ampil Krau",
+            "Chrey Khmum",
+            "Lve",
+            "Pnov Ti Muoy",
+            "Pnov Ti Pir",
+            "Pou Ti",
+            "Preaek Changkran",
+            "Prey Daeum Thnoeng",
+            "Prey Tueng",
+            "Rumlech",
+            "Ruessei Sanh"
+        ],
+        "Svay Antor": [
+            "Angkor Tret",
+            "Chea Khlang",
+            "Chrey",
+            "Damrei Puon",
+            "Me Bon",
+            "Pean Roung",
+            "Popueus",
+            "Prey Khla",
+            "Samraong",
+            "Svay Antor",
+            "Tuek Thla"
+        ]
+    },
+    "Pursat": {
+        "Bakan": [
+            "Boeng Bat Kandaol",
+            "Boeng Khnar",
+            "Khnar Totueng",
+            "Me Tuek",
+            "Ou Ta Paong",
+            "Rumlech",
+            "Snam Preah",
+            "Svay Doun Kaev",
+            "Ta Lou",
+            "Trapeang Chong"
+        ],
+        "Kandieng": [
+            "Anlong Vil",
+            "Kandieng",
+            "Kanhchor",
+            "Reang Til",
+            "Srae Sdok",
+            "Svay Luong",
+            "Sya",
+            "Veal",
+            "Kaoh Chum"
+        ],
+        "Krakor": [
+            "Anlong Tnaot",
+            "Ansa Chambak",
+            "Boeng Kantuot",
+            "Chheu Tom",
+            "Kampong Luong",
+            "Kampong Pou",
+            "Kbal Trach",
+            "Ou Sandan",
+            "Sna Ansa",
+            "Svay Sa",
+            "Tnaot Chum"
+        ],
+        "Phnum Kravanh": [
+            "Bak Chenhchien",
+            "Leach",
+            "Phteah Rung",
+            "Prongil",
+            "Rokat",
+            "Santreae",
+            "Samraong"
+        ],
+        "Krong Pursat": [
+            "Chamraeun Phal",
+            "Lolok Sa",
+            "Phteah Prey",
+            "Prey Nhi",
+            "Roleab",
+            "Svay At",
+            "Banteay Dei"
+        ],
+        "Veal Veaeng": [
+            "Ou Saom",
+            "Krapeu Pir",
+            "Anlong Reab",
+            "Pramaoy",
+            "Thma Da"
+        ]
+    },
+    "Ratanakiri": {
+        "Andoung Meas": [
+            "Malik",
+            "Nhang",
+            "Ta Lav"
+        ],
+        "Krong Ban Lung": [
+            "Kachanh",
+            "Labansiek",
+            "Yeak Laom"
+        ],
+        "Bar Kaev": [
+            "Kak",
+            "Ke Chong",
+            "Laming",
+            "Lung Khung",
+            "Seung",
+            "Ting Chak"
+        ],
+        "Koun Mom": [
+            "Serei Mongkol",
+            "Srae Angkrong",
+            "Ta Ang",
+            "Teun",
+            "Trapeang Chres",
+            "Trapeang Kraham"
+        ],
+        "Lumphat": [
+            "Chey Otdam",
+            "Ka Laeng",
+            "La Bang Muoy",
+            "La Bang Pir",
+            "Pa Tang",
+            "Seda"
+        ],
+        "Ou Chum": [
+            "Cha Ung",
+            "Pouy",
+            "Aekakpheap",
+            "Kalai",
+            "Ou Chum",
+            "Sameakki",
+            "L'ak"
+        ],
+        "Ou Ya Dav": [
+            "Bar Kham",
+            "Lum Choar",
+            "Pak Nhai",
+            "Pate",
+            "Sesant",
+            "Saom Thum",
+            "Ya Tung"
+        ],
+        "Ta Veaeng": [
+            "Ta Veaeng Leu",
+            "Ta Veaeng Kraom"
+        ],
+        "Veun Sai": [
+            "Ban Pong",
+            "Hat Pak",
+            "Ka Choun",
+            "Kaoh Pang",
+            "Kaoh Peak",
+            "Kok Lak",
+            "Pa Kalan",
+            "Phnum Kok",
+            "Veun Sai"
+        ]
+    },
+    "Siem Reap": {
+        "Angkor Chum": [
+            "Char Chhuk",
+            "Doun Peaeng",
+            "Kouk Doung",
+            "Koul",
+            "Nokor Pheas",
+            "Srae Khvav",
+            "Ta Saom"
+        ],
+        "Angkor Thum": [
+            "Chob Ta Trav",
+            "Leang Dai",
+            "Peak Snaeng",
+            "Svay Chek"
+        ],
+        "Banteay Srei": [
+            "Khnar Sanday",
+            "Khun Ream",
+            "Preak Dak",
+            "Rumchek",
+            "Run Ta Aek",
+            "Tbaeng"
+        ],
+        "Chi Kraeng": [
+            "Anlong Samnar",
+            "Chi Kraeng",
+            "Kampong Kdei",
+            "Khvav",
+            "Kouk Thlok Kraom",
+            "Kouk Thlok Leu",
+            "Lveaeng Ruessei",
+            "Pongro Kraom",
+            "Pongro Leu",
+            "Ruessei Lok",
+            "Sangvaeuy",
+            "Spean Tnaot"
+        ],
+        "Kralanh": [
+            "Chonloas Dai",
+            "Kampong Thkov",
+            "Kralanh",
+            "Krouch Kor",
+            "Roung Kou",
+            "Sambuor",
+            "Saen Sokh",
+            "Snuol",
+            "Sranal",
+            "Ta an"
+        ],
+        "Puok": [
+            "Sasar Sdam",
+            "Doun Kaev",
+            "Kdei Run",
+            "Kaev Poar",
+            "Khnat",
+            "Lvea",
+            "Mukh Paen",
+            "Pou Treay",
+            "Puok",
+            "Prey Chruk",
+            "Reul",
+            "Samraong Yea",
+            "Trei Nhoar",
+            "Yeang"
+        ],
+        "Prasat Bakong": [
+            "Bakong",
+            "Ballangk",
+            "Kampong Phluk",
+            "Kantreang",
+            "Kandaek",
+            "Mean Chey",
+            "Roluos",
+            "Trapeang Thum"
+        ],
+        "Krong Siem Reab": [
+            "Sla Kram",
+            "Svay Dangkum",
+            "Kouk Chak",
+            "Sala Kamraeuk",
+            "Nokor Thum",
+            "Chreav",
+            "Chong Knies",
+            "Sambuor",
+            "Siem Reab",
+            "Srangae",
+            "Ampil",
+            "Krabei Riel",
+            "Tuek Vil"
+        ],
+        "Soutr Nikom": [
+            "Chan Sar",
+            "Dam Daek",
+            "Dan Run",
+            "Kampong Khleang",
+            "Kien Sangkae",
+            "Khchas",
+            "Khnar Pou",
+            "Popel",
+            "Samraong",
+            "Ta Yaek"
+        ],
+        "Srei Snam": [
+            "Chrouy Neang Nguon",
+            "Klang Hay",
+            "Tram Sasar",
+            "Moung",
+            "Prei",
+            "Slaeng Spean"
+        ],
+        "Svay Leu": [
+            "Boeng Mealea",
+            "Kantuot",
+            "Khnang Phnum",
+            "Svay Leu",
+            "Ta Siem"
+        ],
+        "Varin": [
+            "Prasat",
+            "Lvea Krang",
+            "Srae Nouy",
+            "Svay Sa",
+            "Varin"
+        ]
+    },
+    "Preah Sihanouk": {
+        "Krong Preah Sihanouk": [
+            "Sangkat Muoy",
+            "Sangkat Pir",
+            "Sangkat Bei",
+            "Sangkat Buon",
+            "Kaoh Rung"
+        ],
+        "Prey Nob": [
+            "Andoung Thma",
+            "Boeng Ta Prum",
+            "Bet Trang",
+            "Cheung Kou",
+            "Ou Chrov",
+            "Ou Oknha Heng",
+            "Prey Nob",
+            "Ream",
+            "Sameakki",
+            "Samrong",
+            "Tuek L'ak",
+            "Tuek Thla",
+            "Tuol Toetueng",
+            "Veal Renh"
+        ],
+        "Stueng Hav": [
+            "Kampenh",
+            "Ou Treh",
+            "Tumnob Rolok"
+        ],
+        "Kampong Seila": [
+            "Chamkar Luong",
+            "Kampong Seila",
+            "Ou Bak Roteh",
+            "Stueng Chhay"
+        ]
+    },
+    "Stung Treng": {
+        "Sesan": [
+            "Kampun",
+            "Kbal Romeas",
+            "Phluk",
+            "Samkhuoy",
+            "Sdau",
+            "Srae Kor",
+            "Ta Lat"
+        ],
+        "Siem Bouk": [
+            "Kaoh Preah",
+            "Kaoh Sampeay",
+            "Kaoh Sralau",
+            "Ou Mreah",
+            "Ou Ruessei Kandal",
+            "Siem Bouk",
+            "Srae Krasang"
+        ],
+        "Siem Pang": [
+            "Preaek Meas",
+            "Sekong",
+            "Santepheap",
+            "Srae Sambour",
+            "Thma Kaev"
+        ],
+        "Krong Stueng Traeng": [
+            "Stueng Traeng",
+            "Sarh Ruessei",
+            "Preah Bat",
+            "Sameakki"
+        ],
+        "Thala Barivat": [
+            "Anlong Phe",
+            "Chamkar Leu",
+            "Kang Cham",
+            "Kaoh Snaeng",
+            "Anlong Chrey",
+            "Ou Rai",
+            "Ou Svay",
+            "Preah Rumkel",
+            "Sam'ang",
+            "Srae Ruessei",
+            "Thala"
+        ]
+    },
+    "Svay Rieng": {
+        "Chantrea": [
+            "Chantrea",
+            "Chres",
+            "Me Sa Thngak",
+            "Prey Kokir",
+            "Samraong",
+            "Tuol Sdei"
+        ],
+        "Kampong Rou": [
+            "Banteay Krang",
+            "Nhor",
+            "Ksetr",
+            "Preah Ponlea",
+            "Prey Thum",
+            "Reach Montir",
+            "Samlei",
+            "Samyaong",
+            "Svay Ta Yean",
+            "Thmei",
+            "Tnaot"
+        ],
+        "Rumduol": [
+            "Bos Mon",
+            "Thmea",
+            "Chak",
+            "Chrung Popel",
+            "Kampong Ampil",
+            "Meun Chey",
+            "Pong Tuek",
+            "Sangkae",
+            "Svay Chek",
+            "Thna Thnong"
+        ],
+        "Romeas Haek": [
+            "Ampil",
+            "Andoung Pou",
+            "Andoung Trabaek",
+            "Angk Prasrae",
+            "Chantrei",
+            "Chrey Thum",
+            "Doung",
+            "Kampong Trach",
+            "Kokir",
+            "Krasang",
+            "Mukh Da",
+            "Mream",
+            "Sambuor",
+            "Sambatt Mean Chey",
+            "Trapeang Sdau",
+            "Tras"
+        ],
+        "Svay Chrum": [
+            "Angk Ta Sou",
+            "Basak",
+            "Chambak",
+            "Chamlang",
+            "Ta Suos",
+            "Chheu Teal",
+            "Doun Sa",
+            "Kouk Pring",
+            "Kraol Kou",
+            "Kruos",
+            "Pouthi Reach",
+            "Svay Angk",
+            "Svay Chrum",
+            "Svay Thum",
+            "Svay Yea",
+            "Thlok"
+        ],
+        "Krong Svay Rieng": [
+            "Svay Rieng",
+            "Prey Chhlak",
+            "Koy Trabaek",
+            "Pou Ta Hao",
+            "Chek",
+            "Svay Toea",
+            "Sangkhoar"
+        ],
+        "Svay Teab": [
+            "Kokir Saom",
+            "Kandieng Reay",
+            "Monourom",
+            "Popeaek",
+            "Prey Ta Ei",
+            "Prasout",
+            "Romeang Thkaol",
+            "Sambuor",
+            "Svay Rumpea"
+        ],
+        "Krong Bavet": [
+            "Bati",
+            "Bavet",
+            "Chrak Mtes",
+            "Prasat",
+            "Prey Angkunh"
+        ]
+    },
+    "Takeo": {
+        "Angkor Borei": [
+            "Angkor Borei",
+            "Ba Srae",
+            "Kouk Thlok",
+            "Ponley",
+            "Preaek Phtoul",
+            "Prey Phkoam"
+        ],
+        "Bati": [
+            "Chambak",
+            "Champei",
+            "Doung",
+            "Kandoeng",
+            "Komar Reachea",
+            "Krang Leav",
+            "Krang Thnong",
+            "Lumpong",
+            "Pea Ream",
+            "Pot Sar",
+            "Souphi",
+            "Tang Doung",
+            "Tnaot",
+            "Trapeang Krasang",
+            "Trapeang Sab"
+        ],
+        "Borei Cholsar": [
+            "Bourei Cholsar",
+            "Chey Chouk",
+            "Doung Khpos",
+            "Kampong Krasang",
+            "Kouk Pou"
+        ],
+        "Kiri Vong": [
+            "Angk Prasat",
+            "Preah Bat Choan Chum",
+            "Kamnab",
+            "Kampeaeng",
+            "Kiri Chong Kaoh",
+            "Kouk Prech",
+            "Phnum Den",
+            "Prey Ampok",
+            "Prey Rumdeng",
+            "Ream Andaeuk",
+            "Saom",
+            "Ta Ou"
+        ],
+        "Kaoh Andaet": [
+            "Krapum Chhuk",
+            "Pech Sar",
+            "Prey Khla",
+            "Prey Yuthka",
+            "Romenh",
+            "Thlea Prachum"
+        ],
+        "Prey Kabbas": [
+            "Angkanh",
+            "Ban Kam",
+            "Champa",
+            "Char",
+            "Kampeaeng",
+            "Kampong Reab",
+            "Kdanh",
+            "Pou Rumchak",
+            "Prey Kabbas",
+            "Prey Lvea",
+            "Prey Phdau",
+            "Snao",
+            "Tang Yab"
+        ],
+        "Samraong": [
+            "Boeng Tranh Khang Cheung",
+            "Boeng Tranh Khang Tboung",
+            "Cheung Kuon",
+            "Chumreah Pen",
+            "Khvav",
+            "Lumchang",
+            "Rovieng",
+            "Samraong",
+            "Soeng",
+            "Sla",
+            "Trea"
+        ],
+        "Krong Doun Kaev": [
+            "Baray",
+            "Roka Knong",
+            "Roka Krau"
+        ],
+        "Tram Kak": [
+            "Angk Ta Saom",
+            "Cheang Tong",
+            "Kus",
+            "Leay Bour",
+            "Nhaeng Nhang",
+            "Ou Saray",
+            "Trapeang Kranhung",
+            "Otdam Souriya",
+            "Popel",
+            "Samraong",
+            "Srae Ronoung",
+            "Ta Phem",
+            "Tram Kak",
+            "Trapeang Thum Khang Cheung",
+            "Trapeang Thum Khang Tboung"
+        ],
+        "Treang": [
+            "Angkanh",
+            "Angk Khnaor",
+            "Chi Khmar",
+            "Khvav",
+            "Prambei Mom",
+            "Angk Kaev",
+            "Prey Sloek",
+            "Roneam",
+            "Sambuor",
+            "Sanlung",
+            "Smaong",
+            "Srangae",
+            "Thlok",
+            "Tralach"
+        ]
+    },
+    "Oddar Meanchey": {
+        "Anlong Veaeng": [
+            "Anlong Veaeng",
+            "Trapeang Tav",
+            "Trapeang Prei",
+            "Thlat",
+            "Lumtong"
+        ],
+        "Banteay Ampil": [
+            "Ampil",
+            "Beng",
+            "Kouk Khpos",
+            "Kouk Mon"
+        ],
+        "Chong Kal": [
+            "Cheung Tien",
+            "Chong Kal",
+            "Krasang",
+            "Pongro"
+        ],
+        "Krong Samraong": [
+            "Bansay Reak",
+            "Bos Sbov",
+            "Kriel",
+            "Samraong",
+            "Ou Smach"
+        ],
+        "Trapeang Prasat": [
+            "Bak Anlung",
+            "Ph'av",
+            "Ou Svay",
+            "Preah Pralay",
+            "Tumnob Dach",
+            "Trapeang Prasat"
+        ]
+    },
+    "Kep": {
+        "Damnak Chang'aeur": [
+            "Angkaol",
+            "Ou Krasar",
+            "Pong Tuek"
+        ],
+        "Krong Kaeb": [
+            "Kaeb",
+            "Prey Thum"
+        ]
+    },
+    "Pailin": {
+        "Krong Pailin": [
+            "Pailin",
+            "Ou Tavau",
+            "Tuol Lvea",
+            "Ba Yakha"
+        ],
+        "Sala Krau": [
+            "Sala Krau",
+            "Stueng Trang",
+            "Stueng Kach",
+            "Ou Andoung"
+        ]
+    },
+    "Tboung Khmum": {
+        "Dambae": [
+            "Chong Cheach",
+            "Dambae",
+            "Kouk Srok",
+            "Neang Teut",
+            "Seda",
+            "Trapeang Pring",
+            "Tuek Chrov"
+        ],
+        "Krouch Chhmar": [
+            "Chhuk",
+            "Chumnik",
+            "Kampong Treas",
+            "Kaoh Pir",
+            "Krouch Chhmar",
+            "Peus Muoy",
+            "Peus Pir",
+            "Preaek A Chi",
+            "Roka Khnaor",
+            "Svay Khleang",
+            "Trea",
+            "Tuol Snuol"
+        ],
+        "Memot": [
+            "Chan Mul",
+            "Choam",
+            "Choam Kravien",
+            "Choam Ta Mau",
+            "Dar",
+            "Kampoan",
+            "Kokir",
+            "Memong",
+            "Memot",
+            "Rumchek",
+            "Rung",
+            "Tonlung",
+            "Tramung",
+            "Treak"
+        ],
+        "Ou Reang Ov": [
+            "Ampil Ta Pok",
+            "Chak",
+            "Damrel",
+            "Kong Chey",
+            "Mien",
+            "Preah Theat",
+            "Tuol Sophi"
+        ],
+        "Ponhea Kraek": [
+            "Doun Tei",
+            "Kak",
+            "Kandaol Chrum",
+            "Kaong Kang",
+            "Kraek",
+            "Popel",
+            "Trapeang Phlong",
+            "Veal Mlu"
+        ],
+        "Krong Suong": [
+            "Suong",
+            "Vihear Luong"
+        ],
+        "Tboung Khmum": [
+            "Anhchaeum",
+            "Boeng Pruol",
+            "Chikor",
+            "Chirou Muoy",
+            "Chirou Pir",
+            "Chob",
+            "Kor",
+            "Lngieng",
+            "Moung Riev",
+            "Peam Chileang",
+            "Roka Po Pram",
+            "Sralab",
+            "Thma Pechr",
+            "Tonle Bet"
+        ]
+    }
+}

@@ -1,13 +1,11 @@
 import { Body, Controller, Post, Req, Res, UseGuards } from '@nestjs/common';
-import { Response, Request } from 'express';
+import { Response } from 'express';
 
 import { UserDto } from 'src/core/users/dto/user.dto';
 import { IsPublic } from 'src/shared/decorator';
 import { BaseController } from 'src/shared/res/custom-response';
 import { AuthService } from './auth.service';
-import { LoginDto } from './dto/login.dto';
-import { AuthGuard } from '@nestjs/passport';
-import { LocalStrategy } from './strategies/local.strategy';
+import { LocalAuthGuard } from './guard/local-authl.guard';
 
 @Controller('auth')
 export class AuthController extends BaseController {
@@ -23,27 +21,21 @@ export class AuthController extends BaseController {
     return this.customResponse(res, userCreated);
   }
 
-  @IsPublic()
+  @UseGuards(LocalAuthGuard)
   @Post('/login')
-  @IsPublic()
-  public async login(@Body() userDto: LoginDto, @Res() res: Response) {
+  public async login(
+    @Body() userDto: any,
+    @Res() res: Response,
+    @Req() req: any,
+  ) {
+    console.log('Controller', req.user);
+
     const { data, token } = await this._authService.loginWithEmail(userDto);
+    const serilize = new UserDto(data);
     return this.customResponse(res, {
-      data,
+      serilize,
+      // data,
       token,
     });
-  }
-
-  @UseGuards(LocalStrategy)
-  @Post('login-passport')
-  public async loginStategy(
-    @Res() res: Response,
-    @Req() req: Request,
-    @Body() userDto: LoginDto,
-  ) {
-    console.log(userDto);
-
-    const user = await this._authService.loginWithEmail(userDto);
-    return this.customResponse(res, user);
   }
 }

@@ -30,6 +30,15 @@ services:
       - 6379:6379
     networks:
       - es-net
+  postgres:
+    image: postgres
+    restart: always
+    environment:
+        POSTGRES_PASSWORD: example
+    ports:
+      - 5432:5432
+    volumes:   
+        - ./postgres:/lib/postgresql/data
 networks:
   es-net:
     driver: bridge

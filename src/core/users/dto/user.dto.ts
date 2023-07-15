@@ -50,7 +50,7 @@ export class UserDto {
 
   @IsNumber()
   @IsOptional()
-  role: number;
+  roleId?: number;
 
   @IsOptional()
   @Expose()
@@ -66,5 +66,19 @@ export class UserDto {
 
   public static plainToClass<T>(this: new (...args: any[]) => T, obj: T) {
     return plainToInstance(this, obj, { excludeExtraneousValues: true });
+  }
+  constructor(data: any) {
+    if (data) {
+      this.id = data.id;
+      this.address = data.address;
+      this.email = data.email;
+      this.lastName = data.lastName;
+      this.firstName = data.firstName;
+      this.phone = data.phone;
+      this.createdAt = data.createdAt;
+      this.updatedAt = data.updatedAt;
+      this.userName = data.userName;
+      this.roleId = data.roleId;
+    }
   }
 }

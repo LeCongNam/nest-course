@@ -1,12 +1,12 @@
-import { Module, forwardRef } from '@nestjs/common';
-import { JwtModule, JwtService } from '@nestjs/jwt';
+import { Module } from '@nestjs/common';
+import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
 import { HandleEventEmitterModule } from 'src/event-emitter/event-emiter.module';
 import { SearchModule } from '../search/search.module';
+import { UserModule } from '../users/user.module';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import { LocalStrategy } from './strategies/local.strategy';
-import { UserModule } from '../users/user.module';
 
 @Module({
   imports: [
@@ -21,7 +21,7 @@ import { UserModule } from '../users/user.module';
     UserModule,
   ],
   controllers: [AuthController],
-  providers: [AuthService, JwtService, LocalStrategy],
+  providers: [AuthService, LocalStrategy],
   exports: [AuthService],
 })
 export class AuthModule {}
