@@ -35,7 +35,7 @@ import { UserModule } from './core/users/user.module';
         // entities: [],
         autoLoadEntities: true,
         synchronize: true,
-        logging: ['query', 'error', 'info'],
+        // logging: ['query', 'error', 'info'],
       }),
       inject: [ConfigService],
     }),
@@ -95,9 +95,9 @@ import { UserModule } from './core/users/user.module';
         pt: 'pt-BR',
       },
       loaderOptions: {
-        path: join(__dirname, '/i18n/'),
+        path: join(process.cwd(), '/src/i18n/'),
         watch: true,
-        outDir: '/dist',
+        outDir: '/dist/src',
       },
       resolvers: [
         { use: QueryResolver, options: ['lang'] },

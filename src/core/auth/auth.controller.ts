@@ -6,7 +6,6 @@ import { IsPublic } from 'src/shared/decorator';
 import { BaseController } from 'src/shared/res/custom-response';
 import { AuthService } from './auth.service';
 import { LoginDto } from './dto/login.dto';
-import { AuthGuard } from '@nestjs/passport';
 import { LocalStrategy } from './strategies/local.strategy';
 
 @Controller('auth')
@@ -19,7 +18,6 @@ export class AuthController extends BaseController {
   @Post('/register')
   public async register(@Body() user: UserDto, @Res() res: Response) {
     const userCreated = await this._authService.registerAccount(user);
-    // const newUser = UserDto.plainToClass(userCreated);
     return this.customResponse(res, userCreated);
   }
 
@@ -36,13 +34,7 @@ export class AuthController extends BaseController {
 
   @UseGuards(LocalStrategy)
   @Post('login-passport')
-  public async loginStategy(
-    @Res() res: Response,
-    @Req() req: Request,
-    @Body() userDto: LoginDto,
-  ) {
-    console.log(userDto);
-
+  public async loginStrategy(@Res() res: Response, @Body() userDto: LoginDto) {
     const user = await this._authService.loginWithEmail(userDto);
     return this.customResponse(res, user);
   }

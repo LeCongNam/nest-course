@@ -1,7 +1,6 @@
 import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 import { JwtService } from '@nestjs/jwt';
-import { Observable } from 'rxjs';
 
 @Injectable()
 export class RoleGuard implements CanActivate {
@@ -9,9 +8,7 @@ export class RoleGuard implements CanActivate {
 
   public canActivate(context: ExecutionContext): boolean {
     const req = context.switchToHttp().getRequest();
-
     const roles = this.reflector.get<number[]>('roles', context.getHandler());
-
     if (!roles && roles?.length === 0) {
       return false;
     }

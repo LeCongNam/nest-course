@@ -7,7 +7,7 @@ import { LoginDto } from '../dto/login.dto';
 import { ConfigService } from '@nestjs/config';
 
 @Injectable()
-export class LocalStrategy extends PassportStrategy(Strategy) {
+export class LocalStrategy extends PassportStrategy(Strategy, 'jwt') {
   constructor(
     private _authService: AuthService,
     private readonly configService: ConfigService,
@@ -15,7 +15,7 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       ignoreExpiration: false,
-      secretOrKey: configService.get<string>('PRIVATE_KEY'),
+      secretOrKey: process.env.PRIVATE_KEY,
       signOptions: { expiresIn: '60s' },
     });
   }

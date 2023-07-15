@@ -10,10 +10,10 @@ import {
   Res,
   UseGuards,
 } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
 import { plainToClass } from 'class-transformer';
 import { Response } from 'express';
 import { BaseController } from 'src/shared/res/custom-response';
-import { AuthGuard } from '../auth/guard/auth.guard';
 import { RoleGuard } from '../auth/guard/role.guard';
 import { Role } from './constant';
 import { Roles } from './decorator';
@@ -28,8 +28,8 @@ export class UserController extends BaseController {
     super();
   }
 
+  @UseGuards(AuthGuard('jwt'), RoleGuard)
   @Get('profile/:id')
-  @UseGuards(AuthGuard, RoleGuard)
   @Roles(Role.MEMBER, Role.ADMIN)
   public async getProfile(
     @Param('id', ParseUUIDPipe) id: string,

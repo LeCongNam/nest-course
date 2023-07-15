@@ -1,4 +1,10 @@
-import { HttpException, HttpStatus, Inject, Logger } from '@nestjs/common';
+import {
+  HttpException,
+  HttpStatus,
+  Inject,
+  Logger,
+  forwardRef,
+} from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { compare, genSalt, hashSync } from 'bcrypt';
 
@@ -18,6 +24,7 @@ export class AuthService {
     private readonly configService: ConfigService,
     private readonly jwtService: JwtService,
     @Inject(Provider.SearchService) private _searchService: SearchService,
+    @Inject(forwardRef(() => UserService))
     private _userService: UserService,
     private eventEmitter: EventEmitter2,
   ) {}
