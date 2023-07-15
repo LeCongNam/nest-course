@@ -13,7 +13,8 @@ import { join } from 'path';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './core/auth/auth.module';
-import { NotificationModule } from './core/auth/notification/notification.module';
+import { FilesModule } from './core/files/files.module';
+import { NotificationModule } from './core/notification/notification.module';
 import { ProductsModule } from './core/products/products.module';
 import { SearchModule } from './core/search/search.module';
 import { UserModule } from './core/users/user.module';
@@ -120,21 +121,14 @@ import { UserModule } from './core/users/user.module';
       // disable throwing uncaughtException if an error event is emitted and it has no listeners
       ignoreErrors: false,
     }),
-    ThrottlerModule.forRoot({
-      ttl: 60,
-      limit: 10,
-    }),
     SearchModule,
     UserModule,
     AuthModule,
     NotificationModule,
     ProductsModule,
+    FilesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {
-  // public configure(consumer: MiddlewareConsumer) {
-  //   // consumer.apply(AppMiddleware).forRoutes('*');
-  // }
-}
+export class AppModule {}

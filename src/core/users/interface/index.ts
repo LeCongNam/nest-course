@@ -1,12 +1,9 @@
-import { type } from 'os';
-import { RoleEntity } from '../entity/role.entity';
-
 export interface FindOneUser {
   userName?: string;
   id?: string;
   email?: string;
   password?: string;
-  roleId?: RoleEntity;
+  roleId?: number;
   deleted?: boolean;
 }
 

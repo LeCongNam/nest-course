@@ -3,9 +3,10 @@ import {
   Column,
   Entity,
   JoinColumn,
-  ManyToOne,
+  OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+import { Role } from '../constant';
 import { RoleEntity } from './role.entity';
 
 @Entity({
@@ -15,7 +16,7 @@ export class UserEntity extends BaseEntity {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   @PrimaryGeneratedColumn('uuid', { length: 36 })
-  id: string;
+  id?: string;
 
   @Column({
     unique: true,
@@ -49,14 +50,18 @@ export class UserEntity extends BaseEntity {
   @Column()
   lastName: string;
 
-  @ManyToOne(() => RoleEntity, (role) => role.users, {
+  @OneToOne(() => RoleEntity, (role) => role.users, {
     nullable: false,
     lazy: true,
   })
   @JoinColumn({
     name: 'roleId',
   })
-  role: RoleEntity;
+  @Column({
+    type: 'integer',
+    default: Role.MEMBER,
+  })
+  roleId: number;
 
   constructor() {
     super();

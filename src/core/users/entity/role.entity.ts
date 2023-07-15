@@ -15,7 +15,7 @@ export class RoleEntity extends BaseEntity {
   })
   name: string;
 
-  @OneToMany(() => UserEntity, (user) => user.role, {
+  @OneToMany(() => UserEntity, (user) => user.roleId, {
     cascade: ['soft-remove'],
   })
   @JoinColumn({

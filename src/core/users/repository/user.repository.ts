@@ -3,9 +3,6 @@ import { LoginDto } from 'src/core/auth/dto/login.dto';
 import { BaseRepository } from 'src/shared/repository/base.repository';
 import { DataSource } from 'typeorm';
 import { Role } from '../constant';
-import { AllUser } from '../dto/getAll-user';
-import { UpdateUser } from '../dto/update-user.dto';
-import { UserDto } from '../dto/user.dto';
 import { UserEntity } from '../entity/user.entity';
 import { FindOneUser } from '../interface';
 
@@ -44,22 +41,22 @@ export class UserRepository extends BaseRepository<UserEntity> {
     });
   }
 
-  public async createUser(user: UserDto) {
-    return this.create({
+  public async createUser(user: UserEntity) {
+    console.log('save::', user);
+
+    return this.save({
       ...user,
-      role: {
-        id: Role.MEMBER,
-      },
+      roleId: Role.MEMBER,
     });
   }
 
-  public async getAllUser(user: AllUser) {
+  public async getAllUser(user: any) {
     return this.findAndCount({
       where: user,
     });
   }
 
-  public async updateUser(id: string, user: UpdateUser) {
+  public async updateUser(id: string, user: Partial<UserEntity>) {
     return this.update({ id }, user);
   }
 }

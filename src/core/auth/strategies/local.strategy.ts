@@ -1,10 +1,9 @@
-import { UnauthorizedException } from '@nestjs/common';
+import { Logger, UnauthorizedException } from '@nestjs/common';
 import { Injectable } from '@nestjs/common/decorators';
-import { PassportStrategy } from '@nestjs/passport';
-import { ExtractJwt, Strategy } from 'passport-jwt';
-import { AuthService } from '../auth.service';
-import { LoginDto } from '../dto/login.dto';
 import { ConfigService } from '@nestjs/config';
+import { PassportStrategy } from '@nestjs/passport';
+import { Strategy } from 'passport-local';
+import { AuthService } from '../auth.service';
 
 @Injectable()
 export class LocalStrategy extends PassportStrategy(Strategy, 'jwt') {
@@ -18,13 +17,19 @@ export class LocalStrategy extends PassportStrategy(Strategy, 'jwt') {
       secretOrKey: process.env.PRIVATE_KEY,
       signOptions: { expiresIn: '60s' },
     });
+    // super({
+    //   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+    //   ignoreExpiration: false,
+    //   secretOrKey: configService.get<string>('PRIVATE_KEY'),
+    //   signOptions: { expiresIn: '60s' },
+    // });
+    super();
   }
 
-  public async validate(payload: LoginDto) {
-    const user = await this._authService.validateUser(
-      payload.email,
-      payload.password,
-    );
+  private _logger = new Logger(LocalStrategy.name);
+
+  public async validate(username: string, password: string) {
+    const user = await this._authService.validateUsername(username, password);
     if (!user) {
       throw new UnauthorizedException();
     }

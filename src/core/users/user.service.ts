@@ -7,16 +7,16 @@ import {
   Logger,
   forwardRef,
 } from '@nestjs/common';
-import { filterOptions } from 'src/shared/interface';
 import { AuthService } from '../auth/auth.service';
+import { LoginDto } from '../auth/dto/login.dto';
 import { Provider } from '../search/constant';
 import { SearchService } from '../search/service/search.service';
-import { UserDto } from './dto/user.dto';
-import { FindOneUser } from './interface';
-import { UserRepository } from './repository/user.repository';
-import { LoginDto } from '../auth/dto/login.dto';
 import { AllUser } from './dto/getAll-user';
 import { UpdateUser } from './dto/update-user.dto';
+import { UserDto } from './dto/user.dto';
+import { UserEntity } from './entity/user.entity';
+import { FindOneUser } from './interface';
+import { UserRepository } from './repository/user.repository';
 
 @Injectable()
 export class UserService {
@@ -62,7 +62,7 @@ export class UserService {
    *
    * @description User with Unique ID, email and username. Not accepted duplicate data
    */
-  public async saveUser(user: UserDto) {
+  public async saveUser(user: UserEntity) {
     return this._userRepository.createUser(user);
   }
 
@@ -71,7 +71,7 @@ export class UserService {
 
     if (getUser === null)
       throw new HttpException('User Not Found', HttpStatus.NOT_FOUND);
-    await this._userRepository.updateUser(id, user);
+    // await this._userRepository.updateUser(id, user);
     return this._userRepository.getUserById(id);
   }
 

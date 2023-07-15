@@ -15,7 +15,6 @@ import { EVENT_NAME } from 'src/event-emitter/constants';
 import { Provider } from '../search/constant';
 import { SearchService } from '../search/service/search.service';
 import { Role } from '../users/constant';
-import { UserEntity } from '../users/entity/user.entity';
 import { UserService } from '../users/user.service';
 import { LoginDto } from './dto/login.dto';
 
@@ -38,9 +37,9 @@ export class AuthService {
     }
     user.password = await this.hashPassword(user.password);
 
-    const userCreated: UserEntity = await this._userService.saveUser({
+    const userCreated = await this._userService.saveUser({
       ...user,
-      role: Role.MEMBER,
+      roleId: Role.MEMBER,
     });
 
     // Queue mail
@@ -96,7 +95,10 @@ export class AuthService {
     if (!user) {
       throw new HttpException('User is not exist', HttpStatus.NOT_FOUND);
     }
-    const token = this.generateToken({ id: user.id, roleId: user.role }, true);
+    const token = this.generateToken(
+      { id: user.id, roleId: user?.['role'] },
+      true,
+    );
     const isValidPassword = await compare(userDto.password, user.password);
     if (!isValidPassword) {
       throw new HttpException(
@@ -114,6 +116,33 @@ export class AuthService {
     const user = await this._userService.findOneUser({
       email,
     });
+    if (!user) {
+      throw new HttpException(
+        {
+          message: 'Password or User not correct',
+        },
+        HttpStatus.NOT_FOUND,
+      );
+    }
+
+    const isValid = await compare(password, user.password);
+    if (!isValid) {
+      throw new HttpException(
+        {
+          message: 'Password or User not correct',
+        },
+        HttpStatus.NOT_FOUND,
+      );
+    }
+    return user;
+  }
+
+  public async validateUsername(username: string, password: string) {
+    const user = await this._userService.findOneUser({
+      userName: username,
+    });
+
+    console.log({ user });
 
     if (!user) {
       throw new HttpException(

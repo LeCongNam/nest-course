@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { JwtModule, JwtService } from '@nestjs/jwt';
+import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
 import { HandleEventEmitterModule } from 'src/event-emitter/event-emiter.module';
 import { SearchModule } from '../search/search.module';
@@ -23,7 +23,7 @@ import { UserService } from '../users/user.service';
     PassportModule,
   ],
   controllers: [AuthController],
-  providers: [AuthService, JwtService, LocalStrategy],
+  providers: [AuthService, LocalStrategy],
   exports: [AuthService],
 })
 export class AuthModule {}
