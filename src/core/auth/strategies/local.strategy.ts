@@ -11,12 +11,6 @@ export class LocalStrategy extends PassportStrategy(Strategy, 'jwt') {
     private _authService: AuthService,
     private readonly configService: ConfigService,
   ) {
-    super({
-      jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-      ignoreExpiration: false,
-      secretOrKey: process.env.PRIVATE_KEY,
-      signOptions: { expiresIn: '60s' },
-    });
     // super({
     //   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
     //   ignoreExpiration: false,
