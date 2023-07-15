@@ -7,7 +7,6 @@ import { UserModule } from '../users/user.module';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import { LocalStrategy } from './strategies/local.strategy';
-import { UserService } from '../users/user.service';
 
 @Module({
   imports: [
